@@ -221,6 +221,19 @@ em { font-family: var(--font-hero); font-style: italic; font-weight: 300; }
     will-change: transform;
 }
 .hero-overlay { position: absolute; inset: 0; }
+.hero-noise {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    opacity: 0.12;
+    pointer-events: none;
+    border-radius: 20px;
+    overflow: hidden;
+}
+.hero-noise canvas {
+    width: 100%;
+    height: 100%;
+}
 .hero-content {
     position: relative;
     z-index: 2;
@@ -745,6 +758,7 @@ em { font-family: var(--font-hero); font-style: italic; font-weight: 300; }
         <div class="hero-bg">
             <img src="assets/images/hero.jpg" alt="HyperFocus Hero" class="hero-img">
             <div class="hero-overlay"></div>
+            <div class="hero-noise"><canvas id="noiseCanvas"></canvas></div>
         </div>
         <div class="hero-content">
             <p class="hero-tagline">Your on-demand creative team for content &amp; branding</p>
@@ -836,12 +850,10 @@ em { font-family: var(--font-hero); font-style: italic; font-weight: 300; }
                 </div>
                 <div class="service-list">
                     <ul>
-                        <li>Social Media Campaigns</li>
-                        <li>Short-Form Video Editing</li>
-                        <li>Motion Graphics</li>
+                        <li>Graphic Design</li>
+                        <li>Video Editing</li>
                         <li>3D Animation</li>
-                        <li>Highlight Templates</li>
-                        <li>Advertising Creative</li>
+                        <li>Content Strategy</li>
                     </ul>
                 </div>
                 <div class="service-image">
@@ -858,11 +870,10 @@ em { font-family: var(--font-hero); font-style: italic; font-weight: 300; }
                 </div>
                 <div class="service-list">
                     <ul>
+                        <li>Brand Strategy</li>
                         <li>Logo Design</li>
-                        <li>Brand Identity Systems</li>
-                        <li>Campaign Development</li>
+                        <li>Marketing/Advertising Creative</li>
                         <li>Merchandise Design</li>
-                        <li>Creative Direction</li>
                     </ul>
                 </div>
                 <div class="service-image">
@@ -879,10 +890,10 @@ em { font-family: var(--font-hero); font-style: italic; font-weight: 300; }
                 </div>
                 <div class="service-list">
                     <ul>
-                        <li>Campaign Strategy</li>
-                        <li>Visual Systems</li>
-                        <li>Athlete Branding</li>
-                        <li>Product Launch Creative</li>
+                        <li>Athlete/Talent Branding</li>
+                        <li>Event Branding</li>
+                        <li>Design Systems</li>
+                        <li>Content Strategy</li>
                     </ul>
                 </div>
                 <div class="service-image">
@@ -1208,6 +1219,43 @@ document.addEventListener('DOMContentLoaded', () => {
             if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
         });
     });
+
+    // ANIMATED FILM GRAIN
+    const noiseCanvas = document.getElementById('noiseCanvas');
+    if (noiseCanvas) {
+        const ctx = noiseCanvas.getContext('2d');
+        const heroEl = noiseCanvas.closest('.hero-noise');
+        let grainW = heroEl ? heroEl.offsetWidth : 1920;
+        let grainH = heroEl ? heroEl.offsetHeight : 1080;
+        noiseCanvas.width = grainW;
+        noiseCanvas.height = grainH;
+
+        function renderGrain() {
+            const imageData = ctx.createImageData(grainW, grainH);
+            const data = imageData.data;
+            for (let i = 0; i < data.length; i += 4) {
+                const v = Math.random() * 255;
+                data[i] = v;
+                data[i + 1] = v;
+                data[i + 2] = v;
+                data[i + 3] = 255;
+            }
+            ctx.putImageData(imageData, 0, 0);
+        }
+
+        let lastFrame = 0;
+        const fps = 12;
+        const interval = 1000 / fps;
+
+        function animateGrain(timestamp) {
+            if (timestamp - lastFrame >= interval) {
+                renderGrain();
+                lastFrame = timestamp;
+            }
+            requestAnimationFrame(animateGrain);
+        }
+        requestAnimationFrame(animateGrain);
+    }
 
 });
     </script>
