@@ -319,28 +319,22 @@ em { font-family: var(--font-serif); font-style: italic; }
    FEATURED WORK CAROUSEL
    ============================================ */
 .featured-work { padding: 100px 0; }
-.carousel-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 60px;
+.work-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
 }
-.carousel-track { display: flex; gap: 2rem; overflow: hidden; scroll-behavior: smooth; }
-.carousel-slide {
-    flex: 0 0 100%;
-    max-width: 500px;
-    margin: 0 auto;
-    opacity: 0.4;
-    transform: scale(0.85);
-    transition: all 0.5s ease;
+.project-card {
+    text-align: left;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s ease;
 }
-.carousel-slide.active { opacity: 1; transform: scale(1); }
-.project-card { text-align: left; }
+.project-card:hover { transform: translateY(-4px); }
 .project-image {
     width: 100%;
-    height: 300px;
+    height: 280px;
     border-radius: 12px;
     margin-bottom: 1rem;
     background-size: cover;
@@ -523,11 +517,11 @@ em { font-family: var(--font-serif); font-style: italic; }
     .hero-tagline { font-size: 0.8rem; }
     .about-text p { font-size: 0.95rem; }
     .service-row { grid-template-columns: 1fr; }
+    .work-grid { grid-template-columns: 1fr; }
     .testimonial-card { flex-direction: column; align-items: center; text-align: center; }
     .testimonial-photo { width: 120px; height: 150px; }
     .footer-container { flex-direction: column; gap: 1.5rem; text-align: center; }
     .cta-final { margin: 20px; height: 50vh; }
-    .carousel-wrapper { padding: 0 20px; }
 }
 @media (max-width: 480px) {
     .container { padding: 0 20px; }
@@ -567,20 +561,6 @@ em { font-family: var(--font-serif); font-style: italic; }
         <div class="hero-location">Atlanta, GA</div>
     </section>
 
-    <!-- About Section -->
-    <section class="about" id="about">
-        <div class="container">
-            <h2 class="section-heading">Built for Brands That <em>Refuse</em> to Blend In</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>HyperFocus blends brand strategy with creative execution. We operate as an on-demand creative department for teams, athletes, and fast-growing brands who need high-level content without hiring in-house.</p>
-                    <p>Founded by Ryan Hurst, a multidisciplinary creative director based in Atlanta, HyperFocus focuses on storytelling, design systems, and performance-driven creative that elevates brands in sports and culture.</p>
-                    <p class="about-highlight">We don't just make things look good. We build assets that move brands forward.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Client Logo Ticker -->
     <section class="logo-ticker">
         <div class="ticker-track">
@@ -593,6 +573,47 @@ em { font-family: var(--font-serif); font-style: italic; }
                 <div class="ticker-logo"><img src="assets/logos/br.svg" alt="BR"></div>
                 <div class="ticker-logo"><img src="assets/logos/athletic.svg" alt="Athletic"></div>
                 <div class="ticker-logo"><img src="assets/logos/wss.svg" alt="WSS"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Selected Work Section -->
+    <section class="featured-work" id="work">
+        <div class="container">
+            <h2 class="section-heading-large"><em>Selected</em> Work</h2>
+            <p class="section-subheading">High-impact creative across sports, culture, and brand.</p>
+            <div class="work-grid">
+                <a href="#" class="project-card">
+                    <div class="project-image placeholder-project-1"></div>
+                    <h4>BODYARMOR</h4>
+                    <div class="project-tags">
+                        <span>3D Animation</span>
+                        <span>Advertising Campaign</span>
+                    </div>
+                </a>
+                <a href="#" class="project-card">
+                    <div class="project-image placeholder-project-2"></div>
+                    <h4>Nike</h4>
+                    <div class="project-tags">
+                        <span>Digital Content</span>
+                        <span>Logo Design</span>
+                    </div>
+                </a>
+                <a href="#" class="project-card">
+                    <div class="project-image placeholder-project-3"></div>
+                    <h4>Powerade</h4>
+                    <div class="project-tags">
+                        <span>Creative Direction</span>
+                        <span>Merchandise Design</span>
+                    </div>
+                </a>
+                <a href="#" class="project-card">
+                    <div class="project-image placeholder-project-4"></div>
+                    <h4>Flerish</h4>
+                    <div class="project-tags">
+                        <span>Advertising Campaigns</span>
+                    </div>
+                </a>
             </div>
         </div>
     </section>
@@ -672,56 +693,17 @@ em { font-family: var(--font-serif); font-style: italic; }
         </div>
     </section>
 
-    <!-- Featured Work Section -->
-    <section class="featured-work" id="work">
+    <!-- About Section -->
+    <section class="about" id="about">
         <div class="container">
-            <h2 class="section-heading-large"><em>Selected</em> Work</h2>
-            <p class="section-subheading">High-impact creative across sports, culture, and brand.</p>
-        </div>
-        <div class="carousel-wrapper">
-            <button class="carousel-btn prev" aria-label="Previous">&larr;</button>
-            <div class="carousel-track" id="workCarousel">
-                <div class="carousel-slide">
-                    <div class="project-card">
-                        <div class="project-image placeholder-project-1"></div>
-                        <h4>BODYARMOR</h4>
-                        <div class="project-tags">
-                            <span>3D Animation</span>
-                            <span>Advertising Campaign</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-slide active">
-                    <div class="project-card">
-                        <div class="project-image placeholder-project-2"></div>
-                        <h4>Nike</h4>
-                        <div class="project-tags">
-                            <span>Digital Content</span>
-                            <span>Logo Design</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-slide">
-                    <div class="project-card">
-                        <div class="project-image placeholder-project-3"></div>
-                        <h4>Powerade</h4>
-                        <div class="project-tags">
-                            <span>Creative Direction</span>
-                            <span>Merchandise Design</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-slide">
-                    <div class="project-card">
-                        <div class="project-image placeholder-project-4"></div>
-                        <h4>Flerish</h4>
-                        <div class="project-tags">
-                            <span>Advertising Campaigns</span>
-                        </div>
-                    </div>
+            <h2 class="section-heading">Built for Brands That <em>Refuse</em> to Blend In</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>HyperFocus blends brand strategy with creative execution. We operate as an on-demand creative department for teams, athletes, and fast-growing brands who need high-level content without hiring in-house.</p>
+                    <p>Founded by Ryan Hurst, a multidisciplinary creative director based in Atlanta, HyperFocus focuses on storytelling, design systems, and performance-driven creative that elevates brands in sports and culture.</p>
+                    <p class="about-highlight">We don't just make things look good. We build assets that move brands forward.</p>
                 </div>
             </div>
-            <button class="carousel-btn next" aria-label="Next">&rarr;</button>
         </div>
     </section>
 
@@ -899,25 +881,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
     fadeElements.forEach(el => observerFade.observe(el));
-
-    // FEATURED WORK CAROUSEL
-    const workCarousel = document.getElementById('workCarousel');
-    if (workCarousel) {
-        const slides = workCarousel.querySelectorAll('.carousel-slide');
-        let currentWork = 1;
-        const wrapper = workCarousel.closest('.carousel-wrapper');
-        const prevBtn = wrapper.querySelector('.prev');
-        const nextBtn = wrapper.querySelector('.next');
-
-        function updateWorkCarousel() {
-            slides.forEach((s, i) => { s.classList.remove('active'); if (i === currentWork) s.classList.add('active'); });
-            const active = slides[currentWork];
-            if (active) workCarousel.scrollTo({ left: active.offsetLeft - (workCarousel.offsetWidth / 2) + (active.offsetWidth / 2), behavior: 'smooth' });
-        }
-        if (prevBtn) prevBtn.addEventListener('click', () => { currentWork = (currentWork - 1 + slides.length) % slides.length; updateWorkCarousel(); });
-        if (nextBtn) nextBtn.addEventListener('click', () => { currentWork = (currentWork + 1) % slides.length; updateWorkCarousel(); });
-        updateWorkCarousel();
-    }
 
     // TESTIMONIALS CAROUSEL
     const testCarousel = document.getElementById('testimonialCarousel');
