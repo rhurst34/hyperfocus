@@ -256,24 +256,11 @@ em { font-family: var(--font-hero); font-style: italic; font-weight: 300; }
 .about { padding: 120px 0; }
 .about-content {
     display: grid;
-    grid-template-columns: 300px 1fr;
-    gap: 3rem;
-    align-items: center;
-    margin: 2rem auto 0;
-    max-width: 900px;
-}
-.about-photo {
-    width: 100%;
-    aspect-ratio: 3 / 4;
-    border-radius: 12px;
-    overflow: hidden;
-    background: linear-gradient(135deg, #1a1a1a, #333);
-    border: 1px solid var(--border-light);
-}
-.founder-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+    margin: 3rem auto 0;
+    max-width: var(--max-width);
 }
 .about-text { text-align: left; }
 .about-text p {
@@ -287,6 +274,58 @@ em { font-family: var(--font-hero); font-style: italic; font-weight: 300; }
     color: var(--white) !important;
     font-weight: 500 !important;
     font-size: 1.1rem !important;
+}
+.about-founder { display: flex; flex-direction: column; }
+.about-photo {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 12px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #1a1a1a, #333);
+    border: 1px solid var(--border-light);
+}
+.founder-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.founder-info { margin-top: 1.25rem; }
+.founder-name {
+    font-family: var(--font-hero);
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: var(--white);
+    margin-bottom: 0.25rem;
+}
+.founder-title {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--text-secondary);
+}
+.founder-bio {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-top: 1rem;
+}
+.btn-work-with-us {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--black);
+    background: var(--accent);
+    border-radius: 50px;
+    padding: 12px 32px;
+    margin-top: 1rem;
+    transition: all 0.3s;
+}
+.btn-work-with-us:hover {
+    background: var(--accent-light);
+    transform: translateY(-2px);
 }
 
 /* ============================================
@@ -626,8 +665,9 @@ em { font-family: var(--font-hero); font-style: italic; font-weight: 300; }
     .work-grid { grid-template-columns: 1fr; }
     .meet-grid { grid-template-columns: 1fr; }
     .about-content { grid-template-columns: 1fr; text-align: center; }
-    .about-photo { max-width: 280px; margin: 0 auto; }
+    .about-founder { max-width: 350px; margin: 0 auto; }
     .about-text { text-align: center; }
+    .founder-info { text-align: center; }
     .testimonial-card { flex-direction: column; align-items: center; text-align: center; }
     .testimonial-photo { width: 120px; height: 150px; }
     .footer-container { flex-direction: column; gap: 1.5rem; text-align: center; }
@@ -849,13 +889,20 @@ em { font-family: var(--font-hero); font-style: italic; font-weight: 300; }
         <div class="container">
             <h2 class="section-heading">Built for Brands That <em>Refuse</em> to Blend In</h2>
             <div class="about-content">
-                <div class="about-photo">
-                    <img src="assets/images/ryan.jpg" alt="Ryan Hurst — Founder, HyperFocus" class="founder-img">
-                </div>
                 <div class="about-text">
-                    <p>HyperFocus blends brand strategy with creative execution. We operate as an on-demand creative department for teams, athletes, and fast-growing brands who need high-level content without hiring in-house.</p>
-                    <p>Founded by Ryan Hurst, a multidisciplinary creative director based in Atlanta, HyperFocus focuses on storytelling, design systems, and performance-driven creative that elevates brands in sports and culture.</p>
-                    <p class="about-highlight">We don't just make things look good. We build assets that move brands forward.</p>
+                    <p>At HyperFocus, we blend brand strategy with high-performing content, staying focused on every detail from concept to final delivery.</p>
+                    <p>We're not just a creative agency — we're your on-demand team. Built for brands that refuse to be average, we operate at the intersection of culture, strategy, and craft.</p>
+                    <p>Whether you're launching something new, scaling what's working, or need elite creative executed fast — we're the team that gets it done.</p>
+                    <a href="contact.html" class="btn-work-with-us">Work With Us</a>
+                </div>
+                <div class="about-founder">
+                    <div class="about-photo">
+                        <img src="assets/images/ryan.jpg" alt="Ryan Hurst — Founder, HyperFocus" class="founder-img">
+                    </div>
+                    <div class="founder-info">
+                        <h4 class="founder-name">Meet The Founder</h4>
+                        <p class="founder-bio">Ryan Hurst, a multidisciplinary creative director and graphic designer from Atlanta, Georgia, founded the agency in 2025, bringing over a decade of experience in the design and digital media industry.</p>
+                    </div>
                 </div>
             </div>
         </div>
