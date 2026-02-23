@@ -485,6 +485,27 @@ em { font-family: var(--font-hero); font-style: italic; font-weight: 300; }
     object-fit: cover;
     transition: transform 0.4s ease;
 }
+/* Service accordion toggle (mobile/tablet only) */
+.service-toggle {
+    display: none;
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--border-light);
+    border-radius: 50%;
+    background: transparent;
+    color: var(--white);
+    font-size: 1.2rem;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    margin-left: auto;
+}
+.service-row.service-open .service-toggle {
+    transform: rotate(45deg);
+    border-color: var(--accent);
+    color: var(--accent);
+}
 .service-image-wrap:hover img {
     transform: scale(1.05);
 }
@@ -700,8 +721,36 @@ em { font-family: var(--font-hero); font-style: italic; font-weight: 300; }
    RESPONSIVE
    ============================================ */
 @media (max-width: 1024px) {
-    .service-row { grid-template-columns: 1fr; }
-    .service-image { justify-content: flex-start; }
+    .service-row {
+        grid-template-columns: 1fr;
+        cursor: pointer;
+        gap: 0;
+    }
+    .service-info {
+        align-items: center;
+    }
+    .service-toggle { display: flex; }
+    .service-list {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease, padding 0.4s ease;
+        padding: 0;
+    }
+    .service-image {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease, padding 0.4s ease;
+        justify-content: flex-start;
+        padding: 0;
+    }
+    .service-row.service-open .service-list {
+        max-height: 300px;
+        padding-top: 1.5rem;
+    }
+    .service-row.service-open .service-image {
+        max-height: 300px;
+        padding-top: 1.5rem;
+    }
 }
 @media (max-width: 768px) {
     .nav-links { display: none; }
@@ -749,7 +798,7 @@ em { font-family: var(--font-hero); font-style: italic; font-weight: 300; }
     <!-- Navigation (outside smooth scroll so it stays fixed) -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <a href="#" class="logo"><img src="assets/logos/logo-icon.svg" alt="HyperFocus" class="logo-icon"></a>
+            <a href="index.html" class="logo"><img src="assets/logos/logo-icon.svg" alt="HyperFocus" class="logo-icon"></a>
             <div class="nav-links">
                 <a href="#work">Featured Work</a>
                 <a href="#services">What We Do</a>
@@ -861,6 +910,7 @@ em { font-family: var(--font-hero); font-style: italic; font-weight: 300; }
                     <div class="service-info-content">
                         <h3 class="service-title">Digital Content</h3>
                     </div>
+                    <button class="service-toggle" aria-label="Toggle details">+</button>
                 </div>
                 <div class="service-list">
                     <ul>
@@ -883,6 +933,7 @@ em { font-family: var(--font-hero); font-style: italic; font-weight: 300; }
                     <div class="service-info-content">
                         <h3 class="service-title">Branding &amp;<br>Advertising</h3>
                     </div>
+                    <button class="service-toggle" aria-label="Toggle details">+</button>
                 </div>
                 <div class="service-list">
                     <ul>
@@ -905,6 +956,7 @@ em { font-family: var(--font-hero); font-style: italic; font-weight: 300; }
                     <div class="service-info-content">
                         <h3 class="service-title">Creative<br>Direction</h3>
                     </div>
+                    <button class="service-toggle" aria-label="Toggle details">+</button>
                 </div>
                 <div class="service-list">
                     <ul>
@@ -1214,6 +1266,19 @@ document.addEventListener('DOMContentLoaded', () => {
         if (testNext) testNext.addEventListener('click', () => { currentTest = (currentTest + 1) % testSlides.length; updateTestCarousel(); });
         testDots.forEach((dot, i) => { dot.addEventListener('click', () => { currentTest = i; updateTestCarousel(); }); });
         setInterval(() => { currentTest = (currentTest + 1) % testSlides.length; updateTestCarousel(); }, 5000);
+    }
+
+    // SERVICE ACCORDION (mobile/tablet only)
+    if (!isDesktop) {
+        document.querySelectorAll('.service-row').forEach(row => {
+            row.addEventListener('click', () => {
+                const isOpen = row.classList.contains('service-open');
+                document.querySelectorAll('.service-row').forEach(other => {
+                    if (other !== row) other.classList.remove('service-open');
+                });
+                row.classList.toggle('service-open', !isOpen);
+            });
+        });
     }
 
     // FAQ ACCORDION
