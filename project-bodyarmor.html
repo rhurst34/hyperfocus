@@ -43,7 +43,9 @@
     --max-width: 1200px;
 }
 
-html { scroll-behavior: smooth; font-size: 16px; }
+html { scroll-behavior: smooth; font-size: 16px; overflow: hidden; height: 100%; }
+#smooth-wrapper { overflow: hidden; position: fixed; inset: 0; height: 100%; width: 100%; }
+#smooth-content { will-change: transform; }
 
 body {
     font-family: var(--font-sans);
@@ -324,6 +326,9 @@ button { cursor: none; }
    RESPONSIVE
    ============================================ */
 @media (max-width: 1024px) {
+    html { overflow: auto; height: auto; }
+    #smooth-wrapper { position: static; overflow: visible; height: auto; }
+    #smooth-content { will-change: auto; transform: none !important; }
     body { cursor: auto; }
     a { cursor: pointer; }
     button { cursor: pointer; }
@@ -366,6 +371,9 @@ button { cursor: none; }
             </button>
         </div>
     </nav>
+
+    <div id="smooth-wrapper">
+    <div id="smooth-content">
 
     <!-- Project Content -->
     <main class="project-page">
@@ -466,6 +474,9 @@ button { cursor: none; }
         </div>
     </footer>
 
+    </div><!-- /smooth-content -->
+    </div><!-- /smooth-wrapper -->
+
     <script>
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -520,11 +531,50 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // NAVBAR SCROLL
+    // SMOOTH LERP SCROLL (desktop only)
     const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-        navbar.classList.toggle('scrolled', window.scrollY > 100);
-    });
+    const smoothWrapper = document.getElementById('smooth-wrapper');
+    const smoothContent = document.getElementById('smooth-content');
+
+    if (isDesktop) {
+        let scrollTarget = 0;
+        let scrollCurrent = 0;
+        const ease = 0.075;
+
+        function getMaxScroll() {
+            return smoothContent.scrollHeight - window.innerHeight;
+        }
+
+        smoothWrapper.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            scrollTarget += e.deltaY;
+            scrollTarget = Math.max(0, Math.min(scrollTarget, getMaxScroll()));
+        }, { passive: false });
+
+        function smoothScrollLoop() {
+            scrollCurrent += (scrollTarget - scrollCurrent) * ease;
+            smoothContent.style.transform = 'translateY(' + (-scrollCurrent) + 'px)';
+            navbar.classList.toggle('scrolled', scrollCurrent > 100);
+            requestAnimationFrame(smoothScrollLoop);
+        }
+        smoothScrollLoop();
+
+        // Anchor link smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', (e) => {
+                const target = document.querySelector(anchor.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    scrollTarget = target.offsetTop;
+                    scrollTarget = Math.max(0, Math.min(scrollTarget, getMaxScroll()));
+                }
+            });
+        });
+    } else {
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 100);
+        });
+    }
 
 });
     </script>
