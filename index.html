@@ -48,7 +48,9 @@
     --max-width: 1200px;
 }
 
-html { scroll-behavior: smooth; font-size: 16px; }
+html { font-size: 16px; overflow: hidden; height: 100%; }
+#smooth-wrapper { overflow: hidden; position: fixed; inset: 0; height: 100%; width: 100%; }
+#smooth-content { will-change: transform; }
 
 body {
     font-family: var(--font-sans);
@@ -222,13 +224,7 @@ em { font-family: var(--font-hero); font-style: italic; font-weight: 300; }
 }
 .hero-overlay { position: absolute; inset: 0; }
 .hero-noise {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    opacity: 0.12;
-    pointer-events: none;
-    border-radius: 20px;
-    overflow: hidden;
+    display: none;
 }
 .hero-noise canvas {
     width: 100%;
@@ -733,11 +729,11 @@ em { font-family: var(--font-hero); font-style: italic; font-weight: 300; }
 </head>
 <body>
 
-    <!-- Custom Cursor -->
+    <!-- Custom Cursor (outside wrapper so it stays fixed) -->
     <div class="cursor-ring"></div>
     <div class="cursor-dot"></div>
 
-    <!-- Navigation -->
+    <!-- Navigation (outside smooth scroll so it stays fixed) -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="#" class="logo"><img src="assets/logos/logo-icon.svg" alt="HyperFocus" class="logo-icon"></a>
@@ -752,6 +748,9 @@ em { font-family: var(--font-hero); font-style: italic; font-weight: 300; }
             </button>
         </div>
     </nav>
+
+    <div id="smooth-wrapper">
+    <div id="smooth-content">
 
     <!-- Hero Section -->
     <section class="hero" id="hero">
@@ -1098,6 +1097,9 @@ em { font-family: var(--font-hero); font-style: italic; font-weight: 300; }
         </div>
     </footer>
 
+    </div><!-- /smooth-content -->
+    </div><!-- /smooth-wrapper -->
+
     <script>
 /* ============================================
    HYPERFOCUS — All JavaScript
@@ -1146,20 +1148,9 @@ document.addEventListener('DOMContentLoaded', () => {
         cursorDot.style.opacity = '1';
     });
 
-    // NAVBAR scroll + HERO PARALLAX
+    // NAVBAR + HERO refs (used in smooth scroll loop)
     const navbar = document.getElementById('navbar');
     const heroImg = document.querySelector('.hero-img');
-
-    window.addEventListener('scroll', () => {
-        navbar.classList.toggle('scrolled', window.scrollY > 100);
-
-        // Hero zoom
-        if (heroImg) {
-            const scrollY = window.scrollY;
-            const scale = 1 + (scrollY * 0.0004);
-            heroImg.style.transform = 'scale(' + Math.min(scale, 1.3) + ')';
-        }
-    });
 
     // MOBILE NAV
     const mobileToggle = document.querySelector('.mobile-toggle');
@@ -1212,11 +1203,59 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // SMOOTH SCROLL
+    // SMOOTH LERP SCROLL
+    const smoothWrapper = document.getElementById('smooth-wrapper');
+    const smoothContent = document.getElementById('smooth-content');
+    let scrollTarget = 0;
+    let scrollCurrent = 0;
+    const ease = 0.075;
+
+    function getMaxScroll() {
+        return smoothContent.scrollHeight - window.innerHeight;
+    }
+
+    smoothWrapper.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        scrollTarget += e.deltaY;
+        scrollTarget = Math.max(0, Math.min(scrollTarget, getMaxScroll()));
+    }, { passive: false });
+
+    // Touch support for mobile
+    let touchStart = 0;
+    smoothWrapper.addEventListener('touchstart', (e) => {
+        touchStart = e.touches[0].clientY;
+    }, { passive: true });
+    smoothWrapper.addEventListener('touchmove', (e) => {
+        const delta = touchStart - e.touches[0].clientY;
+        touchStart = e.touches[0].clientY;
+        scrollTarget += delta;
+        scrollTarget = Math.max(0, Math.min(scrollTarget, getMaxScroll()));
+    }, { passive: true });
+
+    function smoothScrollLoop() {
+        scrollCurrent += (scrollTarget - scrollCurrent) * ease;
+        smoothContent.style.transform = 'translateY(' + (-scrollCurrent) + 'px)';
+
+        // Update parallax effects based on virtual scroll
+        navbar.classList.toggle('scrolled', scrollCurrent > 100);
+        if (heroImg) {
+            const scale = 1 + (scrollCurrent * 0.0004);
+            heroImg.style.transform = 'scale(' + Math.min(scale, 1.3) + ')';
+        }
+
+        requestAnimationFrame(smoothScrollLoop);
+    }
+    smoothScrollLoop();
+
+    // Anchor link smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', (e) => {
             const target = document.querySelector(anchor.getAttribute('href'));
-            if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+            if (target) {
+                e.preventDefault();
+                scrollTarget = target.offsetTop;
+                scrollTarget = Math.max(0, Math.min(scrollTarget, getMaxScroll()));
+            }
         });
     });
 
