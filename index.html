@@ -134,7 +134,7 @@ em { font-family: var(--font-hero); font-style: italic; font-weight: 300; }
    ============================================ */
 .navbar {
     position: fixed;
-    top: 20px;
+    top: 35px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 1000;
@@ -458,14 +458,18 @@ em { font-family: var(--font-hero); font-style: italic; font-weight: 300; }
 .services { padding: 100px 0; }
 .service-row {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 2rem;
     align-items: start;
     padding: 2.5rem 0;
     border-top: 1px solid var(--border);
 }
-.service-number { font-size: 0.8rem; color: var(--accent); display: block; margin-bottom: 0.5rem; font-weight: 500; }
-.service-title { font-family: var(--font-hero); font-size: 2.4rem; font-weight: 500; color: var(--white); }
+.service-info { display: flex; gap: 1.2rem; align-items: flex-start; }
+.service-number { font-size: 0.8rem; color: var(--accent); font-weight: 500; flex-shrink: 0; padding-top: 0.6rem; }
+.service-info-content { flex: 1; }
+.service-title { font-family: var(--font-hero); font-size: 2.4rem; font-weight: 500; color: var(--white); line-height: 1.1; }
+.service-list { margin-top: 1rem; }
+.service-list ul { list-style: none; }
 .service-list ul li { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.4rem; font-weight: 300; }
 .service-image { display: flex; justify-content: flex-end; }
 .service-image-wrap {
@@ -696,8 +700,8 @@ em { font-family: var(--font-hero); font-style: italic; font-weight: 300; }
    RESPONSIVE
    ============================================ */
 @media (max-width: 1024px) {
-    .service-row { grid-template-columns: 1fr 1fr; }
-    .service-image { grid-column: 1 / -1; justify-content: center; }
+    .service-row { grid-template-columns: 1fr; }
+    .service-image { justify-content: flex-start; }
 }
 @media (max-width: 768px) {
     .nav-links { display: none; }
@@ -845,15 +849,17 @@ em { font-family: var(--font-hero); font-style: italic; font-weight: 300; }
             <div class="service-row">
                 <div class="service-info">
                     <span class="service-number">[ 01 ]</span>
-                    <h3 class="service-title">Digital Content</h3>
-                </div>
-                <div class="service-list">
-                    <ul>
-                        <li>Graphic Design</li>
-                        <li>Video Editing</li>
-                        <li>3D Animation</li>
-                        <li>Content Strategy</li>
-                    </ul>
+                    <div class="service-info-content">
+                        <h3 class="service-title">Digital Content</h3>
+                        <div class="service-list">
+                            <ul>
+                                <li>Graphic Design</li>
+                                <li>Video Editing</li>
+                                <li>3D Animation</li>
+                                <li>Content Strategy</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
                 <div class="service-image">
                     <div class="service-image-wrap">
@@ -865,15 +871,17 @@ em { font-family: var(--font-hero); font-style: italic; font-weight: 300; }
             <div class="service-row">
                 <div class="service-info">
                     <span class="service-number">[ 02 ]</span>
-                    <h3 class="service-title">Branding &amp;<br>Advertising</h3>
-                </div>
-                <div class="service-list">
-                    <ul>
-                        <li>Brand Strategy</li>
-                        <li>Logo Design</li>
-                        <li>Marketing/Advertising Creative</li>
-                        <li>Merchandise Design</li>
-                    </ul>
+                    <div class="service-info-content">
+                        <h3 class="service-title">Branding &amp;<br>Advertising</h3>
+                        <div class="service-list">
+                            <ul>
+                                <li>Brand Strategy</li>
+                                <li>Logo Design</li>
+                                <li>Marketing/Advertising Creative</li>
+                                <li>Merchandise Design</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
                 <div class="service-image">
                     <div class="service-image-wrap">
@@ -885,15 +893,17 @@ em { font-family: var(--font-hero); font-style: italic; font-weight: 300; }
             <div class="service-row">
                 <div class="service-info">
                     <span class="service-number">[ 03 ]</span>
-                    <h3 class="service-title">Creative<br>Direction</h3>
-                </div>
-                <div class="service-list">
-                    <ul>
-                        <li>Athlete/Talent Branding</li>
-                        <li>Event Branding</li>
-                        <li>Design Systems</li>
-                        <li>Content Strategy</li>
-                    </ul>
+                    <div class="service-info-content">
+                        <h3 class="service-title">Creative<br>Direction</h3>
+                        <div class="service-list">
+                            <ul>
+                                <li>Athlete/Talent Branding</li>
+                                <li>Event Branding</li>
+                                <li>Design Systems</li>
+                                <li>Content Strategy</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
                 <div class="service-image">
                     <div class="service-image-wrap">
