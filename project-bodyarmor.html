@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BODYARMOR — HyperFocus</title>
+    <title>BodyArmor — HyperFocus</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -282,27 +282,78 @@ button { cursor: none; }
     aspect-ratio: 9 / 16;
 }
 
-/* Next Project CTA */
-.next-project {
-    text-align: center;
-    padding: 6rem 0 4rem;
+/* More Work Section */
+.more-work {
+    padding: 5rem 0 3rem;
+    border-top: 1px solid var(--border);
+    margin-top: 4rem;
 }
-.next-project-label {
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 1rem;
-}
-.next-project-name {
+.more-work-heading {
     font-family: var(--font-hero);
-    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 300;
     color: var(--white);
-    transition: color 0.3s;
+    margin-bottom: 2.5rem;
 }
-.next-project-name:hover { color: var(--accent); }
+.more-work-heading em {
+    font-family: var(--font-hero);
+    font-style: italic;
+    font-weight: 300;
+    color: var(--accent);
+}
+.more-work-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+.more-work-card {
+    display: block;
+    transition: transform 0.3s ease;
+}
+.more-work-card:hover {
+    transform: translateY(-4px);
+}
+.more-work-image {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--bg-card);
+    margin-bottom: 1rem;
+}
+.more-work-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+.more-work-card:hover .more-work-image img {
+    transform: scale(1.05);
+}
+.more-work-card h4 {
+    font-family: var(--font-sans);
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.75rem;
+}
+.more-work-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+.more-work-tags span {
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 50px;
+    padding: 4px 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
 
 /* Footer */
 .footer {
@@ -347,6 +398,7 @@ button { cursor: none; }
 }
 @media (max-width: 480px) {
     .content-grid { grid-template-columns: 1fr; }
+    .more-work-grid { grid-template-columns: 1fr; }
 }
     </style>
 </head>
@@ -380,14 +432,14 @@ button { cursor: none; }
 
         <a href="index.html#work" class="back-link">&larr; Back to Work</a>
 
-        <h1 class="project-title">BODYARMOR</h1>
+        <h1 class="project-title">BodyArmor</h1>
 
-        <p class="project-description">We partner with BODYARMOR to create high-impact digital content that fuels their presence across social media. From eye-catching 3D animations to product renders, our work helps bring their brand and campaigns to life in a way that speaks directly to both athletes and fans.</p>
+        <p class="project-description">We partner with BodyArmor to create high-impact digital content that fuels their presence across social media. From eye-catching 3D animations to product renders, our work helps bring their brand and campaigns to life in a way that speaks directly to both athletes and fans.</p>
 
         <div class="project-meta">
             <div class="meta-group">
                 <p class="meta-label">Client</p>
-                <p class="meta-value">BODYARMOR</p>
+                <p class="meta-value">BodyArmor</p>
             </div>
             <div class="meta-group">
                 <p class="meta-label">Year</p>
@@ -454,10 +506,27 @@ button { cursor: none; }
             </div>
         </div>
 
-        <!-- Next Project -->
-        <div class="next-project">
-            <p class="next-project-label">Next Project</p>
-            <a href="project-nike.html" class="next-project-name">NIKE</a>
+        <!-- More Work -->
+        <div class="more-work">
+            <h2 class="more-work-heading">More <em>Work</em></h2>
+            <div class="more-work-grid">
+                <a href="project-nike.html" class="more-work-card">
+                    <div class="more-work-image"><img src="assets/images/nike.jpg" alt="Nike Project"></div>
+                    <h4>Nike</h4>
+                    <div class="more-work-tags">
+                        <span>Branding</span>
+                        <span>Creative Direction</span>
+                    </div>
+                </a>
+                <a href="project-powerade.html" class="more-work-card">
+                    <div class="more-work-image"><img src="assets/images/powerade.jpg" alt="Powerade Project"></div>
+                    <h4>Powerade</h4>
+                    <div class="more-work-tags">
+                        <span>Advertising</span>
+                        <span>Digital Content</span>
+                    </div>
+                </a>
+            </div>
         </div>
 
     </main>
