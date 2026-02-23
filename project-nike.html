@@ -215,7 +215,7 @@ button { cursor: none; }
 /* Hero Image */
 .project-hero {
     width: 100%;
-    aspect-ratio: 3 / 4;
+    aspect-ratio: 4 / 3;
     border-radius: 16px;
     overflow: hidden;
     margin-bottom: 3rem;
@@ -280,6 +280,11 @@ button { cursor: none; }
 /* Video items: 1080x1920 = 9:16 aspect ratio */
 .content-item.item-video {
     aspect-ratio: 9 / 16;
+}
+
+/* Horizontal image items: 16:9 landscape */
+.content-item.item-landscape {
+    aspect-ratio: 16 / 9;
 }
 
 /* Single full-width content row */
@@ -461,7 +466,7 @@ button { cursor: none; }
             </div>
         </div>
 
-        <!-- Hero Image (3:4) -->
+        <!-- Hero Image (4:3) -->
         <div class="project-hero">
             <img src="assets/images/project/nike/nike-hero.jpg" alt="Nike Hero">
         </div>
@@ -476,32 +481,26 @@ button { cursor: none; }
             </div>
         </div>
 
-        <!-- Row 2: 1 Video (1080x1920 = 9:16) -->
+        <!-- Row 2: 1 Video (9:16 vertical) -->
         <div class="content-single">
             <div class="content-item item-video">
                 <video src="assets/images/project/nike/nike-3.mp4" poster="assets/images/project/nike/nike-3-cover.jpg" controls playsinline preload="metadata"></video>
             </div>
         </div>
 
-        <!-- Row 3: 1 Image (1080x1920 = 9:16) -->
-        <div class="content-single">
-            <div class="content-item item-video">
-                <img src="assets/images/project/nike/nike-4.jpg" alt="Nike Content">
-            </div>
+        <!-- Row 3: 1 Horizontal Image (16:9) -->
+        <div class="content-item item-landscape" style="margin-bottom: 1.5rem;">
+            <img src="assets/images/project/nike/nike-4.jpg" alt="Nike Content">
         </div>
 
-        <!-- Row 4: 1 Image (1080x1920 = 9:16) -->
-        <div class="content-single">
-            <div class="content-item item-video">
-                <img src="assets/images/project/nike/nike-5.jpg" alt="Nike Content">
-            </div>
+        <!-- Row 4: 1 Horizontal Image (16:9) -->
+        <div class="content-item item-landscape" style="margin-bottom: 1.5rem;">
+            <img src="assets/images/project/nike/nike-5.jpg" alt="Nike Content">
         </div>
 
-        <!-- Row 5: 1 Image (1080x1920 = 9:16) -->
-        <div class="content-single">
-            <div class="content-item item-video">
-                <img src="assets/images/project/nike/nike-6.jpg" alt="Nike Content">
-            </div>
+        <!-- Row 5: 1 Horizontal Image (16:9) -->
+        <div class="content-item item-landscape" style="margin-bottom: 1.5rem;">
+            <img src="assets/images/project/nike/nike-6.jpg" alt="Nike Content">
         </div>
 
         <!-- More Work -->
