@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nike — HyperFocus</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+@font-face {
+    font-family: 'Apple Garamond';
+    src: url('assets/fonts/AppleGaramond-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Apple Garamond';
+    src: url('assets/fonts/AppleGaramond-LightItalic.ttf') format('truetype');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+    --bg: #000000;
+    --bg-card: #111111;
+    --text-primary: #ffffff;
+    --text-secondary: #999999;
+    --text-muted: #666666;
+    --accent: #fecc30;
+    --accent-dark: #d4a800;
+    --accent-light: #ffe066;
+    --black: #000000;
+    --white: #ffffff;
+    --border: #222222;
+    --border-light: #333333;
+    --font-sans: 'Inter', -apple-system, sans-serif;
+    --font-hero: 'Apple Garamond', Georgia, serif;
+    --max-width: 1200px;
+}
+
+html { scroll-behavior: smooth; font-size: 16px; overflow: hidden; height: 100%; }
+#smooth-wrapper { overflow: hidden; position: fixed; inset: 0; height: 100%; width: 100%; }
+#smooth-content { will-change: transform; }
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--bg);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    cursor: none;
+}
+
+a { color: inherit; text-decoration: none; cursor: none; }
+button { cursor: none; }
+
+/* Custom Cursor */
+.cursor-ring {
+    position: fixed;
+    width: 30px;
+    height: 30px;
+    border: 1.5px solid var(--white);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s ease, height 0.2s ease;
+}
+.cursor-dot {
+    position: fixed;
+    width: 5px;
+    height: 5px;
+    background: var(--white);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10000;
+    transform: translate(-50%, -50%);
+}
+.cursor-ring.hover {
+    width: 45px;
+    height: 45px;
+}
+
+/* Navigation */
+.navbar {
+    position: fixed;
+    top: 35px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    width: 90%;
+    max-width: 1050px;
+    transition: all 0.3s ease;
+}
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(180deg, rgba(50, 50, 50, 0.7) 0%, rgba(15, 15, 15, 0.85) 100%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 50px;
+    padding: 12px 28px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.08);
+}
+.logo { display: flex; align-items: center; }
+.logo-icon { height: 28px; width: auto; }
+.nav-links { display: flex; gap: 2rem; position: absolute; left: 50%; transform: translateX(-50%); }
+.nav-links a { font-size: 0.85rem; font-weight: 400; color: var(--text-secondary); transition: color 0.3s; white-space: nowrap; }
+.nav-links a:hover { color: var(--accent); }
+.btn-nav {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--black);
+    background: var(--accent);
+    border: none;
+    border-radius: 50px;
+    padding: 8px 20px;
+    transition: all 0.3s;
+    white-space: nowrap;
+}
+.btn-nav:hover { background: var(--accent-light); transform: translateY(-1px); }
+
+/* Mobile Toggle */
+.mobile-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    background: none;
+    border: none;
+    padding: 5px;
+}
+.mobile-toggle span {
+    width: 20px;
+    height: 1.5px;
+    background: var(--white);
+    transition: all 0.3s;
+}
+
+/* ============================================
+   PROJECT PAGE
+   ============================================ */
+.project-page {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 160px 40px 80px;
+}
+
+/* Back Link */
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 3rem;
+    transition: color 0.3s;
+}
+.back-link:hover { color: var(--accent); }
+
+/* Project Header */
+.project-title {
+    font-family: var(--font-hero);
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1.05;
+    margin-bottom: 2rem;
+}
+
+.project-description {
+    font-family: var(--font-sans);
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    max-width: 750px;
+    margin-bottom: 3.5rem;
+}
+
+/* Project Meta */
+.project-meta {
+    display: flex;
+    gap: 5rem;
+    padding: 2.5rem 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 4rem;
+}
+.meta-group {}
+.meta-label {
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 0.75rem;
+}
+.meta-value {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--white);
+    line-height: 1.8;
+}
+
+/* Hero Image */
+.project-hero {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 3rem;
+    background: var(--bg-card);
+}
+.project-hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Content Grid */
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.content-item {
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--bg-card);
+}
+
+.content-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.content-item video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    cursor: none;
+}
+.content-item video::-webkit-media-controls-panel {
+    background: linear-gradient(0deg, rgba(0,0,0,0.6) 0%, transparent 100%);
+}
+.content-item video::-webkit-media-controls-play-button,
+.content-item video::-webkit-media-controls-volume-slider,
+.content-item video::-webkit-media-controls-mute-button,
+.content-item video::-webkit-media-controls-timeline {
+    cursor: none;
+}
+@media (max-width: 1024px) {
+    .content-item video,
+    .content-item video::-webkit-media-controls-play-button,
+    .content-item video::-webkit-media-controls-volume-slider,
+    .content-item video::-webkit-media-controls-mute-button,
+    .content-item video::-webkit-media-controls-timeline { cursor: auto; }
+}
+
+/* Image items: 1080x1350 = 4:5 aspect ratio */
+.content-item.item-image {
+    aspect-ratio: 4 / 5;
+}
+
+/* Video items: 1080x1920 = 9:16 aspect ratio */
+.content-item.item-video {
+    aspect-ratio: 9 / 16;
+}
+
+/* Single full-width content row */
+.content-single {
+    margin-bottom: 1.5rem;
+}
+.content-single .content-item {
+    max-width: 50%;
+    margin: 0 auto;
+}
+
+/* More Work Section */
+.more-work {
+    padding: 5rem 0 3rem;
+    border-top: 1px solid var(--border);
+    margin-top: 4rem;
+}
+.more-work-heading {
+    font-family: var(--font-hero);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 300;
+    color: var(--white);
+    margin-bottom: 2.5rem;
+}
+.more-work-heading em {
+    font-family: var(--font-hero);
+    font-style: italic;
+    font-weight: 300;
+    color: var(--accent);
+}
+.more-work-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+.more-work-card {
+    display: block;
+    transition: transform 0.3s ease;
+}
+.more-work-card:hover {
+    transform: translateY(-4px);
+}
+.more-work-image {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--bg-card);
+    margin-bottom: 1rem;
+}
+.more-work-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+.more-work-card:hover .more-work-image img {
+    transform: scale(1.05);
+}
+.more-work-card h4 {
+    font-family: var(--font-sans);
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.75rem;
+}
+.more-work-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+.more-work-tags span {
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 50px;
+    padding: 4px 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Footer */
+.footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem 0;
+}
+.footer-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.footer-left { font-size: 0.8rem; color: var(--text-muted); font-weight: 300; }
+.footer-right { display: flex; gap: 2rem; }
+.footer-right a { font-size: 0.8rem; color: var(--text-muted); font-weight: 300; transition: color 0.3s; }
+.footer-right a:hover { color: var(--accent); }
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 1024px) {
+    html { overflow: auto; height: auto; }
+    #smooth-wrapper { position: static; overflow: visible; height: auto; }
+    #smooth-content { will-change: auto; transform: none !important; }
+    body { cursor: auto; }
+    a { cursor: pointer; }
+    button { cursor: pointer; }
+    .cursor-ring, .cursor-dot { display: none !important; }
+}
+@media (max-width: 768px) {
+    .nav-links { display: none; }
+    .btn-nav { display: none; }
+    .mobile-toggle { display: flex; }
+    .navbar { max-width: calc(100% - 40px); }
+    .project-page { padding: 120px 20px 60px; }
+    .project-title { font-size: clamp(2.5rem, 10vw, 4rem); }
+    .project-meta { flex-direction: column; gap: 2rem; }
+    .content-grid { gap: 1rem; }
+    .content-single .content-item { max-width: 100%; }
+    .footer-container { flex-direction: column; gap: 1rem; text-align: center; }
+}
+@media (max-width: 480px) {
+    .content-grid { grid-template-columns: 1fr; }
+    .more-work-grid { grid-template-columns: 1fr; }
+}
+    </style>
+</head>
+<body>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-ring"></div>
+    <div class="cursor-dot"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo"><img src="assets/logos/logo-icon.svg" alt="HyperFocus" class="logo-icon"></a>
+            <div class="nav-links">
+                <a href="index.html#work">Work</a>
+                <a href="index.html#services">Services</a>
+                <a href="index.html#about">About</a>
+            </div>
+            <a href="contact.html" class="btn-nav">Start Your Project</a>
+            <button class="mobile-toggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <div id="smooth-wrapper">
+    <div id="smooth-content">
+
+    <!-- Project Content -->
+    <main class="project-page">
+
+        <a href="index.html#work" class="back-link">&larr; Back to Work</a>
+
+        <h1 class="project-title">Nike</h1>
+
+        <p class="project-description">The Swoosh Classic was a 360 degree branding experience through merchandise, digital displays, photography and video that built awareness and engaged fans on game day. Following its inaugural success, The Swoosh Classic became a cultural staple in New York, returning year after year.</p>
+
+        <div class="project-meta">
+            <div class="meta-group">
+                <p class="meta-label">Client</p>
+                <p class="meta-value">Nike</p>
+            </div>
+            <div class="meta-group">
+                <p class="meta-label">Year</p>
+                <p class="meta-value">2022</p>
+            </div>
+            <div class="meta-group">
+                <p class="meta-label">Service</p>
+                <p class="meta-value">Digital Content<br>Creative Direction</p>
+            </div>
+        </div>
+
+        <!-- Hero Image (3:4) -->
+        <div class="project-hero">
+            <img src="assets/images/project/nike/nike-hero.jpg" alt="Nike Hero">
+        </div>
+
+        <!-- Row 1: 2 Images (1080x1350 = 4:5) -->
+        <div class="content-grid">
+            <div class="content-item item-image">
+                <img src="assets/images/project/nike/nike-1.jpg" alt="Nike Content">
+            </div>
+            <div class="content-item item-image">
+                <img src="assets/images/project/nike/nike-2.jpg" alt="Nike Content">
+            </div>
+        </div>
+
+        <!-- Row 2: 1 Video (1080x1920 = 9:16) -->
+        <div class="content-single">
+            <div class="content-item item-video">
+                <video src="assets/images/project/nike/nike-3.mp4" poster="assets/images/project/nike/nike-3-cover.jpg" controls playsinline preload="metadata"></video>
+            </div>
+        </div>
+
+        <!-- Row 3: 1 Image (1080x1920 = 9:16) -->
+        <div class="content-single">
+            <div class="content-item item-video">
+                <img src="assets/images/project/nike/nike-4.jpg" alt="Nike Content">
+            </div>
+        </div>
+
+        <!-- Row 4: 1 Image (1080x1920 = 9:16) -->
+        <div class="content-single">
+            <div class="content-item item-video">
+                <img src="assets/images/project/nike/nike-5.jpg" alt="Nike Content">
+            </div>
+        </div>
+
+        <!-- Row 5: 1 Image (1080x1920 = 9:16) -->
+        <div class="content-single">
+            <div class="content-item item-video">
+                <img src="assets/images/project/nike/nike-6.jpg" alt="Nike Content">
+            </div>
+        </div>
+
+        <!-- More Work -->
+        <div class="more-work">
+            <h2 class="more-work-heading">More <em>Work</em></h2>
+            <div class="more-work-grid">
+                <a href="project-bodyarmor.html" class="more-work-card">
+                    <div class="more-work-image"><img src="assets/images/bodyarmor.jpg" alt="BodyArmor Project"></div>
+                    <h4>BodyArmor</h4>
+                    <div class="more-work-tags">
+                        <span>3D Animation</span>
+                        <span>Digital Content</span>
+                    </div>
+                </a>
+                <a href="project-flerish.html" class="more-work-card">
+                    <div class="more-work-image"><img src="assets/images/flerish.jpg" alt="Flerish Project"></div>
+                    <h4>Flerish</h4>
+                    <div class="more-work-tags">
+                        <span>Branding</span>
+                        <span>Creative Direction</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <p class="footer-left">&copy; 2025 HyperFocus. All Rights Reserved.</p>
+            <div class="footer-right">
+                <a href="https://instagram.com" target="_blank">Instagram</a>
+                <a href="https://twitter.com" target="_blank">Twitter</a>
+                <a href="mailto:hello@hyperfocus.pro">Email</a>
+            </div>
+        </div>
+    </footer>
+
+    </div><!-- /smooth-content -->
+    </div><!-- /smooth-wrapper -->
+
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    // CUSTOM CURSOR (desktop only)
+    const isDesktop = window.innerWidth > 1024;
+    const cursorRing = document.querySelector('.cursor-ring');
+    const cursorDot = document.querySelector('.cursor-dot');
+
+    if (isDesktop) {
+        let mouseX = 0, mouseY = 0;
+        let ringX = 0, ringY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            cursorDot.style.left = mouseX + 'px';
+            cursorDot.style.top = mouseY + 'px';
+        });
+
+        function animateRing() {
+            ringX += (mouseX - ringX) * 0.15;
+            ringY += (mouseY - ringY) * 0.15;
+            cursorRing.style.left = ringX + 'px';
+            cursorRing.style.top = ringY + 'px';
+            requestAnimationFrame(animateRing);
+        }
+        animateRing();
+
+        document.querySelectorAll('a, button').forEach(el => {
+            el.addEventListener('mouseenter', () => cursorRing.classList.add('hover'));
+            el.addEventListener('mouseleave', () => cursorRing.classList.remove('hover'));
+        });
+
+        document.addEventListener('mouseleave', () => {
+            cursorRing.style.opacity = '0';
+            cursorDot.style.opacity = '0';
+        });
+        document.addEventListener('mouseenter', () => {
+            cursorRing.style.opacity = '1';
+            cursorDot.style.opacity = '1';
+        });
+    }
+
+    // MOBILE NAV
+    const mobileToggle = document.querySelector('.mobile-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    const btnNav = document.querySelector('.btn-nav');
+    if (mobileToggle) {
+        mobileToggle.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            if (btnNav) btnNav.style.display = btnNav.style.display === 'inline-block' ? 'none' : 'inline-block';
+        });
+    }
+
+    // SMOOTH LERP SCROLL (desktop only)
+    const navbar = document.getElementById('navbar');
+    const smoothWrapper = document.getElementById('smooth-wrapper');
+    const smoothContent = document.getElementById('smooth-content');
+
+    if (isDesktop) {
+        let scrollTarget = 0;
+        let scrollCurrent = 0;
+        const ease = 0.075;
+
+        function getMaxScroll() {
+            return smoothContent.scrollHeight - window.innerHeight;
+        }
+
+        smoothWrapper.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            scrollTarget += e.deltaY;
+            scrollTarget = Math.max(0, Math.min(scrollTarget, getMaxScroll()));
+        }, { passive: false });
+
+        function smoothScrollLoop() {
+            scrollCurrent += (scrollTarget - scrollCurrent) * ease;
+            smoothContent.style.transform = 'translateY(' + (-scrollCurrent) + 'px)';
+            navbar.classList.toggle('scrolled', scrollCurrent > 100);
+            requestAnimationFrame(smoothScrollLoop);
+        }
+        smoothScrollLoop();
+
+        // Anchor link smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', (e) => {
+                const target = document.querySelector(anchor.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    scrollTarget = target.offsetTop;
+                    scrollTarget = Math.max(0, Math.min(scrollTarget, getMaxScroll()));
+                }
+            });
+        });
+    } else {
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 100);
+        });
+    }
+
+});
+    </script>
+</body>
+</html>
