@@ -108,11 +108,13 @@ em { font-family: var(--font-serif); font-style: italic; }
     padding: 12px 28px;
 }
 .logo {
-    font-family: var(--font-serif);
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: var(--text-primary);
+    display: flex;
+    align-items: center;
     white-space: nowrap;
+}
+.logo-icon {
+    height: 28px;
+    width: auto;
 }
 .nav-links { display: flex; gap: 1.5rem; }
 .nav-links a {
@@ -240,16 +242,19 @@ em { font-family: var(--font-serif); font-style: italic; }
     width: max-content;
 }
 .ticker-logo {
-    font-family: var(--font-sans);
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     white-space: nowrap;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    transition: color 0.3s;
+    transition: opacity 0.3s;
+    opacity: 0.5;
 }
-.ticker-logo:hover { color: var(--accent); }
+.ticker-logo img {
+    height: 30px;
+    width: auto;
+    filter: brightness(0) invert(1);
+}
+.ticker-logo:hover { opacity: 1; }
 @keyframes tickerScroll {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
@@ -527,7 +532,7 @@ em { font-family: var(--font-serif); font-style: italic; }
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <a href="#" class="logo"><em>HyperFocus</em></a>
+            <a href="#" class="logo"><img src="assets/images/logo-icon.svg" alt="HyperFocus" class="logo-icon"></a>
             <div class="nav-links">
                 <a href="#work">Work</a>
                 <a href="#services">Services</a>
@@ -571,16 +576,14 @@ em { font-family: var(--font-serif); font-style: italic; }
     <section class="logo-ticker">
         <div class="ticker-track">
             <div class="ticker-slide">
-                <div class="ticker-logo">BODYARMOR</div>
-                <div class="ticker-logo">Nike</div>
-                <div class="ticker-logo">Powerade</div>
-                <div class="ticker-logo">Flerish</div>
-                <div class="ticker-logo">40 Love</div>
-                <div class="ticker-logo">BODYARMOR</div>
-                <div class="ticker-logo">Nike</div>
-                <div class="ticker-logo">Powerade</div>
-                <div class="ticker-logo">Flerish</div>
-                <div class="ticker-logo">40 Love</div>
+                <div class="ticker-logo"><img src="assets/images/logos/braves.svg" alt="Braves"></div>
+                <div class="ticker-logo"><img src="assets/images/logos/br.svg" alt="BR"></div>
+                <div class="ticker-logo"><img src="assets/images/logos/athletic.svg" alt="Athletic"></div>
+                <div class="ticker-logo"><img src="assets/images/logos/wss.svg" alt="WSS"></div>
+                <div class="ticker-logo"><img src="assets/images/logos/braves.svg" alt="Braves"></div>
+                <div class="ticker-logo"><img src="assets/images/logos/br.svg" alt="BR"></div>
+                <div class="ticker-logo"><img src="assets/images/logos/athletic.svg" alt="Athletic"></div>
+                <div class="ticker-logo"><img src="assets/images/logos/wss.svg" alt="WSS"></div>
             </div>
         </div>
     </section>
