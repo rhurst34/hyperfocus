@@ -798,9 +798,40 @@ em { font-family: var(--font-hero); font-style: italic; font-weight: 300; }
     .section-heading-large { font-size: 2.5rem; }
     .faq-question { font-size: 0.95rem; }
 }
+
+/* Scroll to Top Button (mobile/tablet only) */
+.scroll-top-btn {
+    display: none;
+    position: fixed;
+    bottom: 30px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+    background: var(--accent);
+    color: var(--black);
+    border: none;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    z-index: 999;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+    cursor: pointer;
+}
+.scroll-top-btn.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+@media (max-width: 1024px) {
+    .scroll-top-btn { display: block; }
+}
     </style>
 </head>
 <body>
+
+    <!-- Scroll to Top Button (mobile/tablet) -->
+    <button class="scroll-top-btn" id="scrollTopBtn" aria-label="Scroll to top">&uarr;</button>
 
     <!-- Custom Cursor (outside wrapper so it stays fixed) -->
     <div class="cursor-ring"></div>
@@ -1299,6 +1330,17 @@ document.addEventListener('DOMContentLoaded', () => {
         if (testNext) testNext.addEventListener('click', () => { fadeToSlide((currentTest + 1) % testSlides.length); resetAutoPlay(); });
         testDots.forEach((dot, i) => { dot.addEventListener('click', () => { fadeToSlide(i); resetAutoPlay(); }); });
         resetAutoPlay();
+    }
+
+    // SCROLL TO TOP BUTTON (mobile/tablet only)
+    if (!isDesktop) {
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
+        window.addEventListener('scroll', () => {
+            scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
+        });
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
     }
 
     // SERVICE ACCORDION (mobile/tablet only)
