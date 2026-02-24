@@ -319,6 +319,13 @@ input, select, textarea { cursor: none; }
 }
 
 /* Responsive */
+@media (max-width: 1024px) {
+    body { cursor: auto; }
+    a { cursor: pointer; }
+    button { cursor: pointer; }
+    input, select, textarea { cursor: auto; }
+    .cursor-ring, .cursor-dot { display: none !important; }
+}
 @media (max-width: 768px) {
     .nav-links { display: none; }
     .btn-nav { display: none; }
@@ -417,41 +424,45 @@ input, select, textarea { cursor: none; }
     <script>
 document.addEventListener('DOMContentLoaded', () => {
 
-    // CUSTOM CURSOR
+    // CUSTOM CURSOR (desktop only)
+    const isDesktop = window.innerWidth > 1024;
     const cursorRing = document.querySelector('.cursor-ring');
     const cursorDot = document.querySelector('.cursor-dot');
-    let mouseX = 0, mouseY = 0;
-    let ringX = 0, ringY = 0;
 
-    document.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-        cursorDot.style.left = mouseX + 'px';
-        cursorDot.style.top = mouseY + 'px';
-    });
+    if (isDesktop) {
+        let mouseX = 0, mouseY = 0;
+        let ringX = 0, ringY = 0;
 
-    function animateRing() {
-        ringX += (mouseX - ringX) * 0.15;
-        ringY += (mouseY - ringY) * 0.15;
-        cursorRing.style.left = ringX + 'px';
-        cursorRing.style.top = ringY + 'px';
-        requestAnimationFrame(animateRing);
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            cursorDot.style.left = mouseX + 'px';
+            cursorDot.style.top = mouseY + 'px';
+        });
+
+        function animateRing() {
+            ringX += (mouseX - ringX) * 0.15;
+            ringY += (mouseY - ringY) * 0.15;
+            cursorRing.style.left = ringX + 'px';
+            cursorRing.style.top = ringY + 'px';
+            requestAnimationFrame(animateRing);
+        }
+        animateRing();
+
+        document.querySelectorAll('a, button, .checkbox-label, .form-select').forEach(el => {
+            el.addEventListener('mouseenter', () => cursorRing.classList.add('hover'));
+            el.addEventListener('mouseleave', () => cursorRing.classList.remove('hover'));
+        });
+
+        document.addEventListener('mouseleave', () => {
+            cursorRing.style.opacity = '0';
+            cursorDot.style.opacity = '0';
+        });
+        document.addEventListener('mouseenter', () => {
+            cursorRing.style.opacity = '1';
+            cursorDot.style.opacity = '1';
+        });
     }
-    animateRing();
-
-    document.querySelectorAll('a, button, .checkbox-label, .form-select').forEach(el => {
-        el.addEventListener('mouseenter', () => cursorRing.classList.add('hover'));
-        el.addEventListener('mouseleave', () => cursorRing.classList.remove('hover'));
-    });
-
-    document.addEventListener('mouseleave', () => {
-        cursorRing.style.opacity = '0';
-        cursorDot.style.opacity = '0';
-    });
-    document.addEventListener('mouseenter', () => {
-        cursorRing.style.opacity = '1';
-        cursorDot.style.opacity = '1';
-    });
 
     // MOBILE NAV
     const mobileToggle = document.querySelector('.mobile-toggle');
