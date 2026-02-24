@@ -598,9 +598,12 @@ em { font-family: var(--font-hero); font-style: italic; font-weight: 300; }
     flex-wrap: wrap;
     justify-content: center;
 }
-.testimonial-carousel { overflow: hidden; width: 100%; max-width: 700px; }
-.testimonial-slide { display: none; }
-.testimonial-slide.active { display: block; }
+.testimonial-carousel { overflow: hidden; width: 100%; max-width: 700px; position: relative; }
+.testimonial-slide { display: none; opacity: 0; transition: opacity 0.6s ease; }
+.testimonial-slide.active { display: block; opacity: 1; }
+.testimonial-slide.fade-out { opacity: 0; }
+.testimonial-slide.fade-in { display: block; opacity: 0; }
+.testimonial-slide.fade-in.active { opacity: 1; }
 .testimonial-card {
     display: flex;
     gap: 2rem;
@@ -1265,15 +1268,37 @@ document.addEventListener('DOMContentLoaded', () => {
         const testPrev = document.getElementById('testPrev');
         const testNext = document.getElementById('testNext');
         let currentTest = 0;
+        let autoPlayTimer;
 
-        function updateTestCarousel() {
-            testSlides.forEach((s, i) => { s.classList.remove('active'); if (i === currentTest) s.classList.add('active'); });
-            testDots.forEach((d, i) => { d.classList.remove('active'); if (i === currentTest) d.classList.add('active'); });
+        function fadeToSlide(nextIndex) {
+            if (nextIndex === currentTest) return;
+            const current = testSlides[currentTest];
+            const next = testSlides[nextIndex];
+            current.style.transition = 'opacity 0.6s ease';
+            current.style.opacity = '0';
+            setTimeout(() => {
+                current.classList.remove('active');
+                current.style.opacity = '';
+                next.classList.add('active');
+                next.style.opacity = '0';
+                requestAnimationFrame(() => {
+                    next.style.transition = 'opacity 0.6s ease';
+                    requestAnimationFrame(() => { next.style.opacity = '1'; });
+                });
+                currentTest = nextIndex;
+                testDots.forEach((d, i) => { d.classList.remove('active'); if (i === currentTest) d.classList.add('active'); });
+            }, 600);
         }
-        if (testPrev) testPrev.addEventListener('click', () => { currentTest = (currentTest - 1 + testSlides.length) % testSlides.length; updateTestCarousel(); });
-        if (testNext) testNext.addEventListener('click', () => { currentTest = (currentTest + 1) % testSlides.length; updateTestCarousel(); });
-        testDots.forEach((dot, i) => { dot.addEventListener('click', () => { currentTest = i; updateTestCarousel(); }); });
-        setInterval(() => { currentTest = (currentTest + 1) % testSlides.length; updateTestCarousel(); }, 5000);
+
+        function resetAutoPlay() {
+            clearInterval(autoPlayTimer);
+            autoPlayTimer = setInterval(() => { fadeToSlide((currentTest + 1) % testSlides.length); }, 5000);
+        }
+
+        if (testPrev) testPrev.addEventListener('click', () => { fadeToSlide((currentTest - 1 + testSlides.length) % testSlides.length); resetAutoPlay(); });
+        if (testNext) testNext.addEventListener('click', () => { fadeToSlide((currentTest + 1) % testSlides.length); resetAutoPlay(); });
+        testDots.forEach((dot, i) => { dot.addEventListener('click', () => { fadeToSlide(i); resetAutoPlay(); }); });
+        resetAutoPlay();
     }
 
     // SERVICE ACCORDION (mobile/tablet only)
