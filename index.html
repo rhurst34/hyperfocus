@@ -764,10 +764,45 @@ em { font-family: var(--font-hero); font-style: italic; font-weight: 300; }
     }
 }
 @media (max-width: 768px) {
-    .nav-links { display: none; }
-    .btn-nav { display: none; }
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: calc(100% + 12px);
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+        background: linear-gradient(180deg, rgba(50, 50, 50, 0.95) 0%, rgba(15, 15, 15, 0.98) 100%);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255,255,255,0.15);
+        border-radius: 16px;
+        padding: 1rem 0;
+        box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+        transform: none;
+        left: 0;
+    }
+    .nav-links.mobile-open {
+        display: flex;
+    }
+    .nav-links a {
+        padding: 0.75rem 1.5rem;
+        width: 100%;
+        text-align: center;
+        font-size: 1rem;
+    }
+    .btn-nav {
+        display: none;
+        margin-top: 0.5rem;
+    }
+    .btn-nav.mobile-open {
+        display: inline-block;
+        margin: 0.5rem auto 0.5rem;
+    }
     .mobile-toggle { display: flex; }
     .navbar { max-width: calc(100% - 40px); }
+    .nav-container { position: relative; }
     .hero { justify-content: flex-start; padding-top: 28vh; }
     .hero-title { font-size: clamp(4rem, 18vw, 8rem); text-align: center; letter-spacing: -2px; }
     .hero-tagline { font-size: 0.85rem; margin-bottom: 1.5rem; text-align: center; letter-spacing: 1px; }
@@ -1275,8 +1310,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnNav = document.querySelector('.btn-nav');
     if (mobileToggle) {
         mobileToggle.addEventListener('click', () => {
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-            if (btnNav) btnNav.style.display = btnNav.style.display === 'inline-block' ? 'none' : 'inline-block';
+            navLinks.classList.toggle('mobile-open');
+            if (btnNav) btnNav.classList.toggle('mobile-open');
         });
     }
 
