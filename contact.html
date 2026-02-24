@@ -367,35 +367,38 @@ input, select, textarea { cursor: none; }
             <h1 class="contact-heading">Start The <em>Conversation</em></h1>
             <p class="contact-subheading">Whether you have a fully scoped brief or just an idea in mind, we're here to listen, guide, and get started.</p>
 
-            <form class="contact-form" id="contactForm">
+            <form class="contact-form" id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                <input type="hidden" name="_subject" value="New Project Inquiry — HyperFocus">
+                <input type="hidden" name="_next" value="https://www.hyperfocus.agency/contact.html?submitted=true">
+
                 <div class="form-group">
                     <label class="form-label">Your Name</label>
-                    <input type="text" class="form-input" placeholder="Full name" required>
+                    <input type="text" name="name" class="form-input" placeholder="Full name" required>
                 </div>
 
                 <div class="form-group">
                     <label class="form-label">Your Email</label>
-                    <input type="email" class="form-input" placeholder="Email address" required>
+                    <input type="email" name="email" class="form-input" placeholder="Email address" required>
                 </div>
 
                 <div class="form-group">
                     <label class="form-label">Your Company Name</label>
-                    <input type="text" class="form-input" placeholder="Company name">
+                    <input type="text" name="company" class="form-input" placeholder="Company name" required>
                 </div>
 
                 <div class="form-group">
                     <label class="form-label">What Do You Need Help With?</label>
                     <div class="checkbox-group">
                         <label class="checkbox-label">
-                            <input type="checkbox" name="service" value="digital-content">
+                            <input type="checkbox" name="service" value="Digital Content">
                             Digital Content
                         </label>
                         <label class="checkbox-label">
-                            <input type="checkbox" name="service" value="branding-advertising">
+                            <input type="checkbox" name="service" value="Branding & Advertising">
                             Branding & Advertising
                         </label>
                         <label class="checkbox-label">
-                            <input type="checkbox" name="service" value="creative-direction">
+                            <input type="checkbox" name="service" value="Creative Direction">
                             Creative Direction
                         </label>
                     </div>
@@ -403,17 +406,17 @@ input, select, textarea { cursor: none; }
 
                 <div class="form-group">
                     <label class="form-label">Your Budget</label>
-                    <select class="form-select" required>
+                    <select name="budget" class="form-select" required>
                         <option value="" disabled selected>Select…</option>
-                        <option value="1k-5k">$1,000 – $5,000</option>
-                        <option value="5k-10k">$5,000 – $10,000</option>
-                        <option value="10k+">$10,000+</option>
+                        <option value="$1,000 – $5,000">$1,000 – $5,000</option>
+                        <option value="$5,000 – $10,000">$5,000 – $10,000</option>
+                        <option value="$10,000+">$10,000+</option>
                     </select>
                 </div>
 
                 <div class="form-group">
                     <label class="form-label">Tell Me About Your Project</label>
-                    <textarea class="form-textarea" placeholder="What are your project goals, requirements, or specific timeline…" rows="5"></textarea>
+                    <textarea name="message" class="form-textarea" placeholder="What are your project goals, requirements, or specific timeline…" rows="5" required></textarea>
                 </div>
 
                 <button type="submit" class="btn-submit">Submit</button>
@@ -475,14 +478,28 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // FORM SUBMIT
+    // FORM VALIDATION (require at least one checkbox)
     const form = document.getElementById('contactForm');
     if (form) {
         form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Thank you! Your message has been received. We\'ll be in touch soon.');
-            form.reset();
+            const checkboxes = form.querySelectorAll('input[name="service"]');
+            const checked = Array.from(checkboxes).some(cb => cb.checked);
+            if (!checked) {
+                e.preventDefault();
+                alert('Please select at least one service you need help with.');
+                return;
+            }
         });
+
+        // Show success message if redirected back after submission
+        if (window.location.search.includes('submitted=true')) {
+            form.style.display = 'none';
+            const wrapper = document.querySelector('.contact-wrapper');
+            const msg = document.createElement('div');
+            msg.style.cssText = 'text-align:center;padding:3rem 0;';
+            msg.innerHTML = '<h2 style="font-family:var(--font-hero);font-size:2.5rem;color:var(--white);margin-bottom:1rem;">Thank You!</h2><p style="font-size:1.1rem;color:var(--text-secondary);">Your message has been received. We\'ll be in touch soon.</p>';
+            wrapper.appendChild(msg);
+        }
     }
 });
     </script>
