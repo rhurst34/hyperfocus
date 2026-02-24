@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BodyArmor — HyperFocus</title>
+    <title>Powerade — HyperFocus</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -153,7 +153,6 @@ button { cursor: none; }
     padding: 160px 40px 80px;
 }
 
-/* Back Link */
 .back-link {
     display: inline-flex;
     align-items: center;
@@ -165,7 +164,6 @@ button { cursor: none; }
 }
 .back-link:hover { color: var(--accent); }
 
-/* Project Header */
 .project-title {
     font-family: var(--font-hero);
     font-size: clamp(3.5rem, 8vw, 7rem);
@@ -185,7 +183,6 @@ button { cursor: none; }
     margin-bottom: 3.5rem;
 }
 
-/* Project Meta */
 .project-meta {
     display: flex;
     gap: 5rem;
@@ -194,7 +191,6 @@ button { cursor: none; }
     border-bottom: 1px solid var(--border);
     margin-bottom: 4rem;
 }
-.meta-group {}
 .meta-label {
     font-family: var(--font-sans);
     font-size: 0.7rem;
@@ -212,7 +208,6 @@ button { cursor: none; }
     line-height: 1.8;
 }
 
-/* Hero Image */
 .project-hero {
     width: 100%;
     aspect-ratio: 4 / 3;
@@ -234,20 +229,17 @@ button { cursor: none; }
     gap: 1.5rem;
     margin-bottom: 1.5rem;
 }
-
 .content-item {
     border-radius: 12px;
     overflow: hidden;
     background: var(--bg-card);
 }
-
 .content-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
 }
-
 .content-item video {
     width: 100%;
     height: 100%;
@@ -255,31 +247,12 @@ button { cursor: none; }
     display: block;
     cursor: none;
 }
-.content-item video::-webkit-media-controls-panel {
-    background: linear-gradient(0deg, rgba(0,0,0,0.6) 0%, transparent 100%);
-}
-.content-item video::-webkit-media-controls-play-button,
-.content-item video::-webkit-media-controls-volume-slider,
-.content-item video::-webkit-media-controls-mute-button,
-.content-item video::-webkit-media-controls-timeline {
-    cursor: none;
-}
+.content-item.item-image { aspect-ratio: 4 / 5; }
+.content-item.item-video { aspect-ratio: 9 / 16; }
+.content-item.item-landscape { aspect-ratio: 16 / 9; }
+
 @media (max-width: 1024px) {
-    .content-item video,
-    .content-item video::-webkit-media-controls-play-button,
-    .content-item video::-webkit-media-controls-volume-slider,
-    .content-item video::-webkit-media-controls-mute-button,
-    .content-item video::-webkit-media-controls-timeline { cursor: auto; }
-}
-
-/* Image items: 1080x1350 = 4:5 aspect ratio */
-.content-item.item-image {
-    aspect-ratio: 4 / 5;
-}
-
-/* Video items: 1080x1920 = 9:16 aspect ratio */
-.content-item.item-video {
-    aspect-ratio: 9 / 16;
+    .content-item video { cursor: auto; }
 }
 
 /* More Work Section */
@@ -310,9 +283,7 @@ button { cursor: none; }
     display: block;
     transition: transform 0.3s ease;
 }
-.more-work-card:hover {
-    transform: translateY(-4px);
-}
+.more-work-card:hover { transform: translateY(-4px); }
 .more-work-image {
     width: 100%;
     aspect-ratio: 4 / 3;
@@ -327,9 +298,7 @@ button { cursor: none; }
     object-fit: cover;
     transition: transform 0.4s ease;
 }
-.more-work-card:hover .more-work-image img {
-    transform: scale(1.05);
-}
+.more-work-card:hover .more-work-image img { transform: scale(1.05); }
 .more-work-card h4 {
     font-family: var(--font-sans);
     font-size: 1.1rem;
@@ -339,11 +308,7 @@ button { cursor: none; }
     letter-spacing: 1px;
     margin-bottom: 0.75rem;
 }
-.more-work-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-}
+.more-work-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 .more-work-tags span {
     font-size: 0.7rem;
     font-weight: 500;
@@ -356,10 +321,7 @@ button { cursor: none; }
 }
 
 /* Footer */
-.footer {
-    border-top: 1px solid var(--border);
-    padding: 2rem 0;
-}
+.footer { border-top: 1px solid var(--border); padding: 2rem 0; }
 .footer-container {
     max-width: var(--max-width);
     margin: 0 auto;
@@ -432,14 +394,14 @@ button { cursor: none; }
 
         <a href="index.html#work" class="back-link">&larr; Back to Work</a>
 
-        <h1 class="project-title">BodyArmor</h1>
+        <h1 class="project-title">Powerade</h1>
 
-        <p class="project-description">We partner with BodyArmor to create high-impact digital content that fuels their presence across social media. From eye-catching 3D animations to product renders, our work helps bring their brand and campaigns to life in a way that speaks directly to both athletes and fans.</p>
+        <p class="project-description">Digital content built to amplify Powerade athletes and drive fan engagement.</p>
 
         <div class="project-meta">
             <div class="meta-group">
                 <p class="meta-label">Client</p>
-                <p class="meta-value">BodyArmor</p>
+                <p class="meta-value">Powerade</p>
             </div>
             <div class="meta-group">
                 <p class="meta-label">Year</p>
@@ -447,83 +409,35 @@ button { cursor: none; }
             </div>
             <div class="meta-group">
                 <p class="meta-label">Service</p>
-                <p class="meta-value">3D Animation<br>Advertising<br>Digital Content</p>
+                <p class="meta-value">Digital Content<br>Merchandise Design</p>
             </div>
         </div>
 
         <!-- Hero Image (4:3) -->
         <div class="project-hero">
-            <img src="assets/images/project/bodyarmor/bodyarmor-hero.jpg" alt="BODYARMOR Hero">
+            <img src="assets/images/project/powerade/powerade-hero.jpg" alt="Powerade Hero">
         </div>
 
-        <!-- Row 1: 2 Images (1080x1350 = 4:5) -->
-        <div class="content-grid">
-            <div class="content-item item-image">
-                <img src="assets/images/project/bodyarmor/bodyarmor-1.jpg" alt="BODYARMOR Content">
-            </div>
-            <div class="content-item item-image">
-                <img src="assets/images/project/bodyarmor/bodyarmor-2.jpg" alt="BODYARMOR Content">
-            </div>
-        </div>
-
-        <!-- Row 2: 2 Videos (1080x1920 = 9:16) -->
-        <div class="content-grid">
-            <div class="content-item item-video">
-                <video src="assets/images/project/bodyarmor/bodyarmor-3.mp4" poster="assets/images/project/bodyarmor/bodyarmor-3-cover.jpg" controls playsinline preload="metadata"></video>
-            </div>
-            <div class="content-item item-video">
-                <video src="assets/images/project/bodyarmor/bodyarmor-4.mp4" poster="assets/images/project/bodyarmor/bodyarmor-4-cover.jpg" controls playsinline preload="metadata"></video>
-            </div>
-        </div>
-
-        <!-- Row 3: 2 Images (1080x1350 = 4:5) -->
-        <div class="content-grid">
-            <div class="content-item item-image">
-                <img src="assets/images/project/bodyarmor/bodyarmor-5.jpg" alt="BODYARMOR Content">
-            </div>
-            <div class="content-item item-image">
-                <img src="assets/images/project/bodyarmor/bodyarmor-6.jpg" alt="BODYARMOR Content">
-            </div>
-        </div>
-
-        <!-- Row 4: 2 Images (1080x1350 = 4:5) -->
-        <div class="content-grid">
-            <div class="content-item item-image">
-                <img src="assets/images/project/bodyarmor/bodyarmor-7.jpg" alt="BODYARMOR Content">
-            </div>
-            <div class="content-item item-image">
-                <img src="assets/images/project/bodyarmor/bodyarmor-8.jpg" alt="BODYARMOR Content">
-            </div>
-        </div>
-
-        <!-- Row 5: 2 Videos (1080x1920 = 9:16) -->
-        <div class="content-grid">
-            <div class="content-item item-video">
-                <video src="assets/images/project/bodyarmor/bodyarmor-9.mp4" poster="assets/images/project/bodyarmor/bodyarmor-9-cover.jpg" controls playsinline preload="metadata"></video>
-            </div>
-            <div class="content-item item-video">
-                <video src="assets/images/project/bodyarmor/bodyarmor-10.mp4" poster="assets/images/project/bodyarmor/bodyarmor-10-cover.jpg" controls playsinline preload="metadata"></video>
-            </div>
-        </div>
+        <!-- Content will be added here later -->
 
         <!-- More Work -->
         <div class="more-work">
             <h2 class="more-work-heading">More <em>Work</em></h2>
             <div class="more-work-grid">
-                <a href="project-nike.html" class="more-work-card">
-                    <div class="more-work-image"><img src="assets/images/nike.jpg" alt="Nike Project"></div>
-                    <h4>Nike</h4>
+                <a href="project-bodyarmor.html" class="more-work-card">
+                    <div class="more-work-image"><img src="assets/images/bodyarmor.jpg" alt="BodyArmor Project"></div>
+                    <h4>BodyArmor</h4>
+                    <div class="more-work-tags">
+                        <span>3D Animation</span>
+                        <span>Digital Content</span>
+                    </div>
+                </a>
+                <a href="project-flerish.html" class="more-work-card">
+                    <div class="more-work-image"><img src="assets/images/flerish.jpg" alt="Flerish Project"></div>
+                    <h4>Flerish</h4>
                     <div class="more-work-tags">
                         <span>Branding</span>
                         <span>Creative Direction</span>
-                    </div>
-                </a>
-                <a href="project-powerade.html" class="more-work-card">
-                    <div class="more-work-image"><img src="assets/images/powerade.jpg" alt="Powerade Project"></div>
-                    <h4>Powerade</h4>
-                    <div class="more-work-tags">
-                        <span>Advertising</span>
-                        <span>Digital Content</span>
                     </div>
                 </a>
             </div>
@@ -548,8 +462,6 @@ button { cursor: none; }
 
     <script>
 document.addEventListener('DOMContentLoaded', () => {
-
-    // CUSTOM CURSOR (desktop only)
     const isDesktop = window.innerWidth > 1024;
     const cursorRing = document.querySelector('.cursor-ring');
     const cursorDot = document.querySelector('.cursor-dot');
@@ -557,39 +469,24 @@ document.addEventListener('DOMContentLoaded', () => {
     if (isDesktop) {
         let mouseX = 0, mouseY = 0;
         let ringX = 0, ringY = 0;
-
         document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-            cursorDot.style.left = mouseX + 'px';
-            cursorDot.style.top = mouseY + 'px';
+            mouseX = e.clientX; mouseY = e.clientY;
+            cursorDot.style.left = mouseX + 'px'; cursorDot.style.top = mouseY + 'px';
         });
-
         function animateRing() {
-            ringX += (mouseX - ringX) * 0.15;
-            ringY += (mouseY - ringY) * 0.15;
-            cursorRing.style.left = ringX + 'px';
-            cursorRing.style.top = ringY + 'px';
+            ringX += (mouseX - ringX) * 0.15; ringY += (mouseY - ringY) * 0.15;
+            cursorRing.style.left = ringX + 'px'; cursorRing.style.top = ringY + 'px';
             requestAnimationFrame(animateRing);
         }
         animateRing();
-
         document.querySelectorAll('a, button').forEach(el => {
             el.addEventListener('mouseenter', () => cursorRing.classList.add('hover'));
             el.addEventListener('mouseleave', () => cursorRing.classList.remove('hover'));
         });
-
-        document.addEventListener('mouseleave', () => {
-            cursorRing.style.opacity = '0';
-            cursorDot.style.opacity = '0';
-        });
-        document.addEventListener('mouseenter', () => {
-            cursorRing.style.opacity = '1';
-            cursorDot.style.opacity = '1';
-        });
+        document.addEventListener('mouseleave', () => { cursorRing.style.opacity = '0'; cursorDot.style.opacity = '0'; });
+        document.addEventListener('mouseenter', () => { cursorRing.style.opacity = '1'; cursorDot.style.opacity = '1'; });
     }
 
-    // MOBILE NAV
     const mobileToggle = document.querySelector('.mobile-toggle');
     const navLinks = document.querySelector('.nav-links');
     const btnNav = document.querySelector('.btn-nav');
@@ -600,26 +497,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // SMOOTH LERP SCROLL (desktop only)
     const navbar = document.getElementById('navbar');
     const smoothWrapper = document.getElementById('smooth-wrapper');
     const smoothContent = document.getElementById('smooth-content');
 
     if (isDesktop) {
-        let scrollTarget = 0;
-        let scrollCurrent = 0;
-        const ease = 0.075;
-
-        function getMaxScroll() {
-            return smoothContent.scrollHeight - window.innerHeight;
-        }
-
+        let scrollTarget = 0; let scrollCurrent = 0; const ease = 0.075;
+        function getMaxScroll() { return smoothContent.scrollHeight - window.innerHeight; }
         smoothWrapper.addEventListener('wheel', (e) => {
-            e.preventDefault();
-            scrollTarget += e.deltaY;
+            e.preventDefault(); scrollTarget += e.deltaY;
             scrollTarget = Math.max(0, Math.min(scrollTarget, getMaxScroll()));
         }, { passive: false });
-
         function smoothScrollLoop() {
             scrollCurrent += (scrollTarget - scrollCurrent) * ease;
             smoothContent.style.transform = 'translateY(' + (-scrollCurrent) + 'px)';
@@ -627,24 +515,15 @@ document.addEventListener('DOMContentLoaded', () => {
             requestAnimationFrame(smoothScrollLoop);
         }
         smoothScrollLoop();
-
-        // Anchor link smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', (e) => {
                 const target = document.querySelector(anchor.getAttribute('href'));
-                if (target) {
-                    e.preventDefault();
-                    scrollTarget = target.offsetTop;
-                    scrollTarget = Math.max(0, Math.min(scrollTarget, getMaxScroll()));
-                }
+                if (target) { e.preventDefault(); scrollTarget = target.offsetTop; scrollTarget = Math.max(0, Math.min(scrollTarget, getMaxScroll())); }
             });
         });
     } else {
-        window.addEventListener('scroll', () => {
-            navbar.classList.toggle('scrolled', window.scrollY > 100);
-        });
+        window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 100); });
     }
-
 });
     </script>
 </body>
