@@ -1330,6 +1330,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         smoothScrollLoop();
 
+        // On page load, check for hash in URL and scroll to it
+        if (window.location.hash) {
+            const hashTarget = document.querySelector(window.location.hash);
+            if (hashTarget) {
+                const pos = Math.max(0, Math.min(hashTarget.offsetTop, getMaxScroll()));
+                scrollTarget = pos;
+                scrollCurrent = pos;
+            }
+        }
+
         // Anchor link smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', (e) => {
