@@ -677,18 +677,18 @@ em { font-family: var(--font-hero); font-style: italic; font-weight: 300; }
     border-radius: 16px;
     overflow: hidden;
 }
-.cta-bg { position: absolute; inset: 0; background: var(--accent); }
-.cta-overlay { position: absolute; inset: 0; background: radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.1) 100%); }
+.cta-bg { position: absolute; inset: 0; }
+.cta-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.45); }
 .cta-content { position: relative; z-index: 2; text-align: center; }
 .cta-content h2 {
     font-family: var(--font-hero);
     font-size: clamp(2rem, 4vw, 3.5rem);
     font-weight: 400;
-    color: var(--black);
+    color: var(--white);
     margin-bottom: 2rem;
     line-height: 1.3;
 }
-.cta-content h2 em { color: var(--black); }
+.cta-content h2 em { color: var(--accent); font-style: italic; }
 .btn-accent {
     display: inline-block;
     font-size: 0.9rem;
@@ -1245,10 +1245,11 @@ em { font-family: var(--font-hero); font-style: italic; font-weight: 300; }
     <!-- CTA / Final Section -->
     <section class="cta-final" id="cta">
         <div class="cta-bg">
+            <img src="assets/images/cta-bg.jpg" alt="" style="width:100%;height:100%;object-fit:cover;">
             <div class="cta-overlay"></div>
         </div>
         <div class="cta-content">
-            <h2>Ready to Build Something<br>That <em>Moves?</em></h2>
+            <h2>Let's Build Something<br>Great <em>Together</em></h2>
             <a href="contact.html" class="btn-accent">Start Your Project</a>
         </div>
     </section>
