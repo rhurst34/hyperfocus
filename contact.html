@@ -289,6 +289,48 @@ input, select, textarea { cursor: none; }
     background: var(--accent-light);
     transform: translateY(-2px);
 }
+.btn-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Form Notification */
+.form-notification {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    background: linear-gradient(180deg, rgba(50, 50, 50, 0.95) 0%, rgba(15, 15, 15, 0.98) 100%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 20px;
+    padding: 3rem 4rem;
+    text-align: center;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    pointer-events: none;
+}
+.form-notification.show {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    pointer-events: auto;
+}
+.form-notification h3 {
+    font-family: var(--font-hero);
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+}
+.form-notification p {
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
 
 /* Back Link */
 .back-link {
@@ -367,9 +409,8 @@ input, select, textarea { cursor: none; }
             <h1 class="contact-heading">Start The <em>Conversation</em></h1>
             <p class="contact-subheading">Whether you have a fully scoped brief or just an idea in mind, we're here to listen, guide, and get started.</p>
 
-            <form class="contact-form" id="contactForm" action="https://formspree.io/f/xkovywlw" method="POST">
+            <form class="contact-form" id="contactForm">
                 <input type="hidden" name="_subject" value="New Project Inquiry — HyperFocus">
-                <input type="hidden" name="_next" value="https://www.hyperfocus.agency/contact.html?submitted=true">
 
                 <div class="form-group">
                     <label class="form-label">Your Name</label>
@@ -423,6 +464,12 @@ input, select, textarea { cursor: none; }
             </form>
         </div>
     </section>
+
+    <!-- Form Notification -->
+    <div class="form-notification" id="formNotification">
+        <h3>Submitted</h3>
+        <p>Thank you for reaching out.<br>We'll be in touch soon.</p>
+    </div>
 
     <script>
 document.addEventListener('DOMContentLoaded', () => {
@@ -478,28 +525,51 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // FORM VALIDATION (require at least one checkbox)
+    // FORM SUBMISSION (AJAX — stay on page)
     const form = document.getElementById('contactForm');
+    const notification = document.getElementById('formNotification');
     if (form) {
         form.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            // Require at least one checkbox
             const checkboxes = form.querySelectorAll('input[name="service"]');
             const checked = Array.from(checkboxes).some(cb => cb.checked);
             if (!checked) {
-                e.preventDefault();
                 alert('Please select at least one service you need help with.');
                 return;
             }
-        });
 
-        // Show success message if redirected back after submission
-        if (window.location.search.includes('submitted=true')) {
-            form.style.display = 'none';
-            const wrapper = document.querySelector('.contact-wrapper');
-            const msg = document.createElement('div');
-            msg.style.cssText = 'text-align:center;padding:3rem 0;';
-            msg.innerHTML = '<h2 style="font-family:var(--font-hero);font-size:2.5rem;color:var(--white);margin-bottom:1rem;">Thank You!</h2><p style="font-size:1.1rem;color:var(--text-secondary);">Your message has been received. We\'ll be in touch soon.</p>';
-            wrapper.appendChild(msg);
-        }
+            const submitBtn = form.querySelector('.btn-submit');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+
+            const formData = new FormData(form);
+
+            fetch('https://formspree.io/f/xkovywlw', {
+                method: 'POST',
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+            })
+            .then(response => {
+                if (response.ok) {
+                    form.reset();
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Submit';
+                    notification.classList.add('show');
+                    setTimeout(() => { notification.classList.remove('show'); }, 3500);
+                } else {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Submit';
+                    alert('Something went wrong. Please try again.');
+                }
+            })
+            .catch(() => {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit';
+                alert('Something went wrong. Please try again.');
+            });
+        });
     }
 });
     </script>
