@@ -690,17 +690,18 @@ em { font-family: var(--font-hero); font-style: italic; font-weight: 300; }
     overflow: hidden;
 }
 .cta-bg { position: absolute; inset: 0; }
-.cta-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.45); }
+.cta-overlay { position: absolute; inset: 0; background: none; }
 .cta-content { position: relative; z-index: 2; text-align: center; }
 .cta-content h2 {
     font-family: var(--font-hero);
     font-size: clamp(2rem, 4vw, 3.5rem);
     font-weight: 400;
-    color: var(--white);
+    color: var(--black);
     margin-bottom: 2rem;
     line-height: 1.3;
+    white-space: nowrap;
 }
-.cta-content h2 em { color: var(--accent); font-style: italic; }
+.cta-content h2 em { color: var(--black); font-style: italic; }
 .btn-accent {
     display: inline-block;
     font-size: 0.9rem;
@@ -1261,7 +1262,7 @@ em { font-family: var(--font-hero); font-style: italic; font-weight: 300; }
             <div class="cta-overlay"></div>
         </div>
         <div class="cta-content">
-            <h2>Let's Build Something<br>Great <em>Together</em></h2>
+            <h2>Let's Build Something Great <em>Together</em></h2>
             <a href="contact.html" class="btn-accent">Start Your Project</a>
         </div>
     </section>
@@ -1279,9 +1280,9 @@ em { font-family: var(--font-hero); font-style: italic; font-weight: 300; }
                 <a href="#about">About</a>
             </div>
             <div class="footer-socials">
-                <a href="#">Instagram</a>
-                <a href="#">TikTok</a>
-                <a href="#">LinkedIn</a>
+                <a href="https://www.instagram.com/hyperfocus.pro/" target="_blank">Instagram</a>
+                <a href="https://www.tiktok.com/@hyperfocus.pro" target="_blank">TikTok</a>
+                <a href="https://www.linkedin.com/company/hyperfocuspro/" target="_blank">LinkedIn</a>
             </div>
         </div>
     </footer>
