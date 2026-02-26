@@ -1,0 +1,3 @@
+# Redirect hyperfocus.pro to hyperfocus.agency
+https://hyperfocus.pro/* https://www.hyperfocus.agency/:splat 301!
+https://www.hyperfocus.pro/* https://www.hyperfocus.agency/:splat 301!
