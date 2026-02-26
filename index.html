@@ -48,9 +48,9 @@
     --text-primary: #ffffff;
     --text-secondary: #999999;
     --text-muted: #666666;
-    --accent: #fecc30;
-    --accent-dark: #d4a800;
-    --accent-light: #ffe066;
+    --accent: #ffffff;
+    --accent-dark: #cccccc;
+    --accent-light: #ffffff;
     --black: #000000;
     --white: #ffffff;
     --border: #222222;
@@ -218,8 +218,8 @@ em { font-family: var(--font-hero); font-style: italic; font-weight: 300; }
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-    padding-top: 13vh;
+    justify-content: center;
+    padding-top: 0;
     overflow: hidden;
     margin: 20px;
 }
@@ -254,7 +254,7 @@ em { font-family: var(--font-hero); font-style: italic; font-weight: 300; }
     font-family: var(--font-hero);
     font-size: 32px;
     font-weight: 300;
-    color: var(--black);
+    color: var(--white);
     margin-bottom: 1rem;
     letter-spacing: 0.5px;
     white-space: nowrap;
@@ -264,12 +264,12 @@ em { font-family: var(--font-hero); font-style: italic; font-weight: 300; }
     font-family: var(--font-hero);
     font-size: clamp(4rem, 16vw, 15rem);
     font-weight: 400;
-    color: var(--black);
+    color: var(--white);
     line-height: 1;
     letter-spacing: -3px;
 }
 .hero-italic {
-    color: var(--black);
+    color: var(--white);
 }
 .hero-location {
     position: absolute;
@@ -280,7 +280,7 @@ em { font-family: var(--font-hero); font-style: italic; font-weight: 300; }
     font-family: var(--font-hero);
     font-size: 1.9rem;
     font-weight: 500;
-    color: var(--accent);
+    color: var(--white);
     letter-spacing: 1px;
 }
 
@@ -698,18 +698,19 @@ em { font-family: var(--font-hero); font-style: italic; font-weight: 300; }
     font-family: var(--font-hero);
     font-size: clamp(2rem, 4vw, 3.5rem);
     font-weight: 400;
-    color: var(--black);
+    color: var(--white);
     margin-bottom: 2rem;
     line-height: 1.3;
     white-space: nowrap;
 }
-.cta-content h2 em { color: var(--black); font-style: italic; }
+.cta-content h2 em { color: var(--white); font-style: italic; }
 .btn-accent {
     display: inline-block;
     font-size: 0.9rem;
     font-weight: 600;
-    color: var(--accent);
-    background: var(--black);
+    color: var(--white);
+    background: rgba(0,0,0,0.6);
+    border: 1px solid rgba(255,255,255,0.3);
     border-radius: 50px;
     padding: 14px 32px;
     transition: all 0.3s;
@@ -855,7 +856,7 @@ em { font-family: var(--font-hero); font-style: italic; font-weight: 300; }
     .nav-links.mobile-open .btn-nav-mobile { opacity: 1; transform: translateY(0); }
     .mobile-toggle { display: flex; }
     .navbar { max-width: calc(100% - 40px); }
-    .hero { justify-content: flex-start; padding-top: 12vh; }
+    .hero { justify-content: flex-start; padding-top: 12vh !important; }
     .hero-title { font-size: clamp(4.5rem, 22vw, 10rem); text-align: center; letter-spacing: -3px; }
     .hero-tagline { font-size: 1.1rem; margin-bottom: 1.5rem; text-align: center; letter-spacing: 1px; max-width: 90vw; margin-top: 2vh; white-space: normal; }
     .mobile-break { display: inline; }
