@@ -1377,6 +1377,13 @@ document.addEventListener('DOMContentLoaded', () => {
             navLinks.classList.toggle('mobile-open');
             navContainer.classList.toggle('menu-open');
         });
+        // Close menu when any nav link is clicked
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('mobile-open');
+                navContainer.classList.remove('menu-open');
+            });
+        });
     }
 
     // FADE-IN ON SCROLL
