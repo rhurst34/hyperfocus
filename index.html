@@ -780,43 +780,65 @@ em { font-family: var(--font-hero); font-style: italic; font-weight: 300; }
 @media (max-width: 768px) {
     .nav-container {
         position: relative;
+        flex-wrap: wrap;
         border-radius: 50px;
-        transition: border-radius 0.3s ease;
+        transition: border-radius 0.35s ease;
     }
     .nav-container.menu-open {
-        border-radius: 20px 20px 0 0;
+        border-radius: 20px;
     }
     .nav-links {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: -1px;
-        right: -1px;
+        display: flex;
+        position: relative;
+        top: auto;
+        left: auto;
+        right: auto;
         flex-direction: column;
         align-items: center;
         gap: 0;
-        background: linear-gradient(180deg, rgba(30, 30, 30, 0.8) 0%, rgba(15, 15, 15, 0.9) 100%);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        border: 1px solid rgba(255,255,255,0.15);
-        border-top: none;
-        border-radius: 0 0 20px 20px;
-        padding: 0.5rem 0 1rem;
-        box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+        width: 100%;
+        flex-basis: 100%;
+        order: 4;
+        background: none;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        border-left: none;
+        border-right: none;
+        border-bottom: none;
+        border-top: 1px solid transparent;
+        border-radius: 0;
+        padding: 0;
+        box-shadow: none;
         transform: none;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s ease;
     }
     .nav-links.mobile-open {
-        display: flex;
+        max-height: 300px;
+        padding: 0.25rem 0 0.5rem;
+        border-top-color: rgba(255,255,255,0.1);
     }
     .nav-links a {
         padding: 0.75rem 1.5rem;
         width: 100%;
         text-align: center;
         font-size: 1rem;
+        opacity: 0;
+        transform: translateY(-8px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
     }
+    .nav-links.mobile-open a {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    .nav-links.mobile-open a:nth-child(1) { transition-delay: 0.05s; }
+    .nav-links.mobile-open a:nth-child(2) { transition-delay: 0.1s; }
+    .nav-links.mobile-open a:nth-child(3) { transition-delay: 0.15s; }
+    .nav-links.mobile-open a:nth-child(4) { transition-delay: 0.2s; }
     .btn-nav-desktop { display: none; }
     .btn-nav-mobile {
-        display: none;
+        display: block;
         width: auto;
         margin-top: 0.5rem;
         background: transparent;
@@ -824,14 +846,16 @@ em { font-family: var(--font-hero); font-style: italic; font-weight: 300; }
         border: none;
         font-weight: 400;
         padding: 0.75rem 1.5rem;
+        opacity: 0;
+        transform: translateY(-8px);
     }
     .btn-nav-mobile:hover { background: transparent; color: var(--accent); transform: none; }
-    .nav-links.mobile-open .btn-nav-mobile { display: inline-block; }
+    .nav-links.mobile-open .btn-nav-mobile { opacity: 1; transform: translateY(0); }
     .mobile-toggle { display: flex; }
     .navbar { max-width: calc(100% - 40px); }
     .hero { justify-content: flex-start; padding-top: 28vh; }
     .hero-title { font-size: clamp(4.5rem, 22vw, 10rem); text-align: center; letter-spacing: -3px; }
-    .hero-tagline { font-size: 1.1rem; margin-bottom: 1.5rem; text-align: center; letter-spacing: 1px; max-width: 90vw; }
+    .hero-tagline { font-size: 1.1rem; margin-bottom: 1.5rem; text-align: center; letter-spacing: 1px; max-width: 90vw; margin-top: 5vh; }
     .hero-location { font-size: 0.9rem; bottom: 30px; }
     .about-text p { font-size: 0.95rem; }
     .service-row { grid-template-columns: 1fr; }
@@ -845,6 +869,7 @@ em { font-family: var(--font-hero); font-style: italic; font-weight: 300; }
     .testimonial-photo { width: 120px; height: 150px; }
     .footer-container { flex-direction: column; gap: 1.5rem; text-align: center; }
     .cta-final { margin: 20px; height: 50vh; }
+    .cta-content { transform: translateY(15%); }
 }
 @media (max-width: 1024px) {
     html { overflow: auto; height: auto; }
@@ -927,7 +952,7 @@ em { font-family: var(--font-hero); font-style: italic; font-weight: 300; }
             <div class="hero-noise"><canvas id="noiseCanvas"></canvas></div>
         </div>
         <div class="hero-content">
-            <p class="hero-tagline">Your on-demand creative team for content &amp; branding</p>
+            <p class="hero-tagline">Your on-demand creative team<br>for content &amp; branding</p>
             <h1 class="hero-title"><em class="hero-italic">Hyper</em>Focus</h1>
         </div>
         <div class="hero-location">Atlanta, GA</div>
