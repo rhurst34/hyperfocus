@@ -1,0 +1,1550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HyperFocus — Your On-Demand Creative Team for Content & Branding</title>
+    <meta name="description" content="Full-spectrum creative services for content & branding. Based in Atlanta, GA.">
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.hyperfocus.agency/">
+    <meta property="og:title" content="HyperFocus — Your On-Demand Creative Team">
+    <meta property="og:description" content="Full-spectrum creative services for content & branding. Based in Atlanta, GA.">
+    <meta property="og:image" content="https://www.hyperfocus.agency/assets/images/og-share.jpg">
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="HyperFocus — Your On-Demand Creative Team">
+    <meta name="twitter:description" content="Full-spectrum creative services for content & branding. Based in Atlanta, GA.">
+    <meta name="twitter:image" content="https://www.hyperfocus.agency/assets/images/og-share.jpg">
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+/* ============================================
+   HYPERFOCUS — Complete Stylesheet
+   Black/White/#fecc30 theme
+   ============================================ */
+@font-face {
+    font-family: 'Apple Garamond';
+    src: url('assets/fonts/AppleGaramond-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Apple Garamond';
+    src: url('assets/fonts/AppleGaramond-LightItalic.ttf') format('truetype');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+    --bg: #000000;
+    --bg-card: #111111;
+    --bg-card-hover: #1a1a1a;
+    --text-primary: #ffffff;
+    --text-secondary: #999999;
+    --text-muted: #666666;
+    --accent: #fecc30;
+    --accent-dark: #d4a800;
+    --accent-light: #ffe066;
+    --black: #000000;
+    --white: #ffffff;
+    --border: #222222;
+    --border-light: #333333;
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-sans: 'Inter', -apple-system, sans-serif;
+    --font-hero: 'Apple Garamond', Georgia, serif;
+    --max-width: 1200px;
+}
+
+html { font-size: 16px; overflow: hidden; height: 100%; }
+#smooth-wrapper { overflow: hidden; position: fixed; inset: 0; height: 100%; width: 100%; }
+#smooth-content { will-change: transform; }
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--bg);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    cursor: none;
+}
+
+/* Custom Cursor */
+.cursor-ring {
+    position: fixed;
+    width: 30px;
+    height: 30px;
+    border: 1.5px solid var(--white);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease;
+}
+.cursor-dot {
+    position: fixed;
+    width: 5px;
+    height: 5px;
+    background: var(--white);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10000;
+    transform: translate(-50%, -50%);
+}
+.cursor-ring.hover {
+    width: 45px;
+    height: 45px;
+    border-color: var(--white);
+}
+
+a { color: inherit; text-decoration: none; cursor: none; }
+button { cursor: none; }
+ul { list-style: none; }
+img { max-width: 100%; display: block; }
+
+.container { max-width: var(--max-width); margin: 0 auto; padding: 0 40px; }
+
+em { font-family: var(--font-hero); font-style: italic; font-weight: 300; }
+
+/* --- Section Headings --- */
+.section-heading {
+    font-family: var(--font-hero);
+    font-size: clamp(3rem, 7vw, 6rem);
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+    text-shadow:
+        0 0 2px rgba(255, 255, 255, 0.9),
+        0 0 5px rgba(255, 255, 255, 0.5),
+        0 0 10px rgba(255, 255, 255, 0.3),
+        0 0 18px rgba(255, 255, 255, 0.15),
+        0 0 30px rgba(255, 255, 255, 0.06);
+}
+.section-heading em { font-style: italic; font-weight: 300; color: var(--white); }
+
+.section-heading-large {
+    font-family: var(--font-hero);
+    font-size: clamp(3rem, 7vw, 6rem);
+    font-weight: 400;
+    text-align: center;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    text-shadow:
+        0 0 2px rgba(255, 255, 255, 0.9),
+        0 0 5px rgba(255, 255, 255, 0.5),
+        0 0 10px rgba(255, 255, 255, 0.3),
+        0 0 18px rgba(255, 255, 255, 0.15),
+        0 0 30px rgba(255, 255, 255, 0.06);
+}
+.section-heading-large em { font-style: italic; font-weight: 300; color: var(--white); }
+
+.section-subheading {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    text-align: center;
+    font-weight: 300;
+    margin-bottom: 3rem;
+}
+
+/* ============================================
+   NAVIGATION
+   ============================================ */
+.navbar {
+    position: fixed;
+    top: 35px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    width: 90%;
+    max-width: 1050px;
+    transition: all 0.3s ease;
+}
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(180deg, rgba(50, 50, 50, 0.7) 0%, rgba(15, 15, 15, 0.85) 100%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 50px;
+    padding: 12px 28px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.08);
+}
+.logo {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+.logo-icon {
+    height: 28px;
+    width: auto;
+}
+.nav-links { display: flex; gap: 2rem; position: absolute; left: 50%; transform: translateX(-50%); }
+.nav-links a {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--text-secondary);
+    transition: color 0.3s;
+    white-space: nowrap;
+}
+.nav-links a:hover { color: var(--accent); }
+.btn-nav {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--black);
+    background: var(--white);
+    border: none;
+    border-radius: 50px;
+    padding: 8px 20px;
+    transition: all 0.3s;
+    white-space: nowrap;
+}
+.btn-nav:hover { background: rgba(255, 255, 255, 0.85); transform: translateY(-1px); }
+.btn-nav-mobile { display: none; }
+.mobile-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+.mobile-toggle span { display: block; width: 20px; height: 2px; background: var(--text-primary); transition: 0.3s; }
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+.hero {
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 13vh;
+    overflow: hidden;
+    margin: 20px;
+}
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    border-radius: 20px;
+}
+.hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1);
+    transition: transform 0.1s linear;
+    will-change: transform;
+}
+.hero-overlay { position: absolute; inset: 0; }
+.hero-noise {
+    display: none;
+}
+.hero-noise canvas {
+    width: 100%;
+    height: 100%;
+}
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+.hero-tagline {
+    font-family: var(--font-sans);
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: var(--white);
+    margin-bottom: 1rem;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    text-shadow:
+        0 0 2px rgba(255, 255, 255, 0.9),
+        0 0 5px rgba(255, 255, 255, 0.5),
+        0 0 10px rgba(255, 255, 255, 0.3),
+        0 0 18px rgba(255, 255, 255, 0.15),
+        0 0 30px rgba(255, 255, 255, 0.06);
+}
+.mobile-break { display: none; }
+.hero-title {
+    font-family: var(--font-hero);
+    font-size: clamp(2.8rem, 11.2vw, 10.5rem);
+    font-weight: 400;
+    color: var(--white);
+    line-height: 1;
+    letter-spacing: -2px;
+    text-shadow:
+        0 0 2px rgba(255, 255, 255, 0.9),
+        0 0 5px rgba(255, 255, 255, 0.5),
+        0 0 10px rgba(255, 255, 255, 0.3),
+        0 0 18px rgba(255, 255, 255, 0.15),
+        0 0 30px rgba(255, 255, 255, 0.06);
+}
+.hero-italic {
+    color: var(--white);
+}
+.hero-location {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    font-family: var(--font-hero);
+    font-size: 1.9rem;
+    font-weight: 500;
+    color: var(--white);
+    letter-spacing: 1px;
+    text-shadow:
+        0 0 2px rgba(255, 255, 255, 0.9),
+        0 0 5px rgba(255, 255, 255, 0.5),
+        0 0 10px rgba(255, 255, 255, 0.3),
+        0 0 18px rgba(255, 255, 255, 0.15),
+        0 0 30px rgba(255, 255, 255, 0.06);
+}
+
+/* ============================================
+   ABOUT SECTION
+   ============================================ */
+.about { padding: 120px 0; }
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+    margin: 3rem auto 0;
+    max-width: var(--max-width);
+}
+.about-text { text-align: left; }
+.about-text p {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+}
+.about-highlight {
+    color: var(--white) !important;
+    font-weight: 500 !important;
+    font-size: 1.1rem !important;
+}
+.about-founder { display: flex; flex-direction: column; }
+.about-photo {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 12px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #1a1a1a, #333);
+    border: 1px solid var(--border-light);
+}
+.founder-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.founder-info { margin-top: 1.25rem; }
+.founder-name {
+    font-family: var(--font-hero);
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+}
+.founder-title {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--text-secondary);
+}
+.founder-bio {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-top: 0.75rem;
+}
+.btn-work-with-us {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--black);
+    background: var(--accent);
+    border-radius: 50px;
+    padding: 12px 32px;
+    margin-top: 0.5rem;
+    transition: all 0.3s;
+}
+.btn-work-with-us:hover {
+    background: var(--accent-light);
+    transform: translateY(-2px);
+}
+
+
+/* ============================================
+   LOGO TICKER
+   ============================================ */
+.logo-ticker {
+    padding: 40px 0;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+.logo-ticker::before,
+.logo-ticker::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 120px;
+    z-index: 2;
+    pointer-events: none;
+}
+.logo-ticker::before {
+    left: 0;
+    background: linear-gradient(to right, var(--bg) 0%, transparent 100%);
+}
+.logo-ticker::after {
+    right: 0;
+    background: linear-gradient(to left, var(--bg) 0%, transparent 100%);
+}
+.ticker-track { overflow: hidden; flex: 1; }
+.ticker-slide {
+    display: flex;
+    gap: 8rem;
+    animation: tickerScroll 30s linear infinite;
+    width: max-content;
+    align-items: center;
+}
+.ticker-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    opacity: 0.3;
+}
+.ticker-logo img {
+    max-height: 45px;
+    max-width: 120px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    pointer-events: none;
+    -webkit-user-drag: none;
+    user-select: none;
+}
+@keyframes tickerScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* ============================================
+   SERVICES SECTION
+   ============================================ */
+.services { padding: 100px 0; }
+.service-row {
+    display: grid;
+    grid-template-columns: 300px 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+    padding: 2.5rem 0;
+    border-top: 1px solid var(--border);
+}
+.service-info { display: flex; gap: 1.2rem; align-items: flex-start; }
+.service-number { font-size: 0.8rem; color: var(--accent); font-weight: 500; flex-shrink: 0; padding-top: 0.6rem; }
+.service-info-content { flex: 1; }
+.service-title { font-family: var(--font-hero); font-size: 2.4rem; font-weight: 500; color: var(--white); line-height: 1.1; }
+.service-list { display: flex; align-items: flex-start; justify-content: flex-start; padding-top: 0.6rem; padding-left: 2rem; }
+.service-list ul { list-style: none; }
+.service-list ul li { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.4rem; font-weight: 300; }
+.service-image { display: flex; justify-content: flex-end; }
+.service-image-wrap {
+    width: 280px;
+    height: 180px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--bg-card);
+}
+.service-image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+/* Service accordion toggle (mobile/tablet only) */
+.service-toggle {
+    display: none;
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--border-light);
+    border-radius: 50%;
+    background: transparent;
+    color: var(--white);
+    font-size: 1.2rem;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    margin-left: auto;
+}
+.service-row.service-open .service-toggle {
+    transform: rotate(45deg);
+    border-color: var(--accent);
+    color: var(--accent);
+}
+.service-image-wrap:hover img {
+    transform: scale(1.05);
+}
+.services-cta { text-align: center; padding-top: 3rem; }
+.btn-outline {
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 50px;
+    padding: 12px 28px;
+    transition: all 0.3s;
+}
+.btn-outline:hover { background: var(--accent); color: var(--black); }
+
+/* ============================================
+   FEATURED WORK CAROUSEL
+   ============================================ */
+.featured-work { padding: 100px 0; }
+.work-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+.project-card {
+    text-align: left;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+.project-image {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+    background: linear-gradient(135deg, #1a1a1a, #333);
+    border: 1px solid var(--border-light);
+}
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1);
+    transition: transform 0.6s ease;
+}
+.project-card:hover .project-image img {
+    transform: scale(1.05);
+}
+.placeholder-project-1 { background: linear-gradient(135deg, #1a1a1a, #333); border: 1px solid var(--border-light); }
+.placeholder-project-2 { background: linear-gradient(135deg, #111, #222); border: 1px solid var(--border-light); }
+.placeholder-project-3 { background: linear-gradient(135deg, #1a1a1a, #2a2a2a); border: 1px solid var(--border-light); }
+.placeholder-project-4 { background: linear-gradient(135deg, #0a0a0a, #1a1a1a); border: 1px solid var(--border-light); }
+.project-card h4 { font-family: var(--font-sans); font-size: 1.1rem; font-weight: 500; color: var(--white); margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
+.project-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.project-tags span { font-size: 0.7rem; padding: 4px 12px; border: 1px solid var(--accent); border-radius: 50px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.5px; }
+.carousel-btn {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--border-light);
+    background: var(--bg-card);
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    z-index: 5;
+}
+.carousel-btn:hover { background: var(--accent); color: var(--black); border-color: var(--accent); }
+.carousel-btn.prev { left: 10px; }
+.carousel-btn.next { right: 10px; }
+
+/* ============================================
+   TESTIMONIALS
+   ============================================ */
+.testimonials { padding: 100px 0; }
+.testimonial-carousel-wrapper {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 60px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.testimonial-carousel { overflow: hidden; width: 100%; max-width: 700px; position: relative; min-height: 320px; }
+.testimonial-slide { position: absolute; top: 0; left: 0; right: 0; opacity: 0; transition: opacity 0.6s ease; visibility: hidden; }
+.testimonial-slide.active { opacity: 1; visibility: visible; position: relative; }
+.testimonial-slide.fade-out { opacity: 0; }
+.testimonial-slide.fade-in { position: absolute; opacity: 0; }
+.testimonial-slide.fade-in.active { opacity: 1; }
+.testimonial-card {
+    display: flex;
+    gap: 2rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem;
+    align-items: flex-start;
+}
+.testimonial-photo {
+    width: 180px;
+    height: 220px;
+    border-radius: 12px;
+    flex-shrink: 0;
+    background-size: cover;
+    background-position: center;
+}
+.placeholder-person-1 { background: linear-gradient(180deg, #222, #111); border: 1px solid var(--border-light); }
+.placeholder-person-2 { background: linear-gradient(180deg, #1a1a1a, #0a0a0a); border: 1px solid var(--border-light); }
+.placeholder-person-3 { background: linear-gradient(180deg, #222, #111); border: 1px solid var(--border-light); }
+.testimonial-content { flex: 1; }
+.testimonial-quote { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; font-weight: 300; margin-bottom: 1.5rem; }
+.testimonial-author h4 { font-size: 0.95rem; font-weight: 500; color: var(--white); }
+.testimonial-author p { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem; }
+.carousel-dots { width: 100%; display: flex; justify-content: center; gap: 8px; margin-top: 2rem; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--text-muted); opacity: 0.4; cursor: pointer; transition: all 0.3s; }
+.dot.active { opacity: 1; background: var(--accent); }
+
+/* ============================================
+   FAQ SECTION
+   ============================================ */
+.faq { padding: 100px 0; }
+.faq-list { max-width: 700px; margin: 0 auto; }
+.faq-item { border-top: 1px solid var(--border); }
+.faq-item:last-child { border-bottom: 1px solid var(--border); }
+.faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    color: var(--white);
+    font-family: var(--font-sans);
+    font-size: 1.05rem;
+    font-weight: 500;
+    text-align: left;
+    padding: 1.5rem 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: color 0.3s;
+}
+.faq-question:hover { color: var(--accent); }
+.faq-icon { font-size: 1.5rem; font-weight: 300; color: var(--accent); transition: transform 0.3s; flex-shrink: 0; margin-left: 1rem; }
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+.faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; }
+.faq-item.open .faq-answer { max-height: 200px; padding-bottom: 1.5rem; }
+.faq-answer p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; font-weight: 300; }
+
+/* ============================================
+   CTA FINAL SECTION
+   ============================================ */
+.cta-final {
+    position: relative;
+    height: 60vh;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 40px;
+    border-radius: 16px;
+    overflow: hidden;
+}
+.cta-bg { position: absolute; inset: 0; }
+.cta-overlay { position: absolute; inset: 0; background: none; }
+.cta-content { position: relative; z-index: 2; text-align: center; }
+.cta-content h2 {
+    font-family: var(--font-hero);
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 400;
+    color: var(--white);
+    margin-bottom: 2rem;
+    line-height: 1.3;
+    white-space: nowrap;
+    text-shadow:
+        0 0 2px rgba(255, 255, 255, 0.9),
+        0 0 5px rgba(255, 255, 255, 0.5),
+        0 0 10px rgba(255, 255, 255, 0.3),
+        0 0 18px rgba(255, 255, 255, 0.15),
+        0 0 30px rgba(255, 255, 255, 0.06);
+}
+.cta-content h2 em { color: var(--white); font-style: italic; }
+.btn-accent {
+    display: inline-block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--white);
+    background: var(--black);
+    border-radius: 50px;
+    padding: 14px 32px;
+    transition: all 0.3s;
+}
+.btn-accent:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3); }
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer { padding: 40px; border-top: 1px solid var(--border); }
+.footer-container { display: flex; justify-content: space-between; align-items: center; max-width: var(--max-width); margin: 0 auto; }
+.footer-brand { display: flex; flex-direction: column; gap: 0.3rem; }
+.footer-logo-img { height: 24px; width: auto; opacity: 0.8; }
+.footer-location { font-size: 0.75rem; color: var(--text-muted); }
+.footer-socials { display: flex; gap: 1.5rem; }
+.footer-socials a { font-size: 0.8rem; color: var(--text-secondary); transition: color 0.3s; }
+.footer-socials a:hover { color: var(--accent); }
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+.fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 1024px) {
+    .service-row {
+        grid-template-columns: 1fr;
+        cursor: pointer;
+        gap: 0;
+    }
+    .service-info {
+        align-items: center;
+    }
+    .service-toggle { display: flex; }
+    .service-list {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease, padding 0.4s ease;
+        padding: 0;
+        justify-content: flex-start;
+    }
+    .service-list ul { text-align: left; }
+    .service-image {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease, padding 0.4s ease;
+        justify-content: flex-start;
+        padding: 0;
+    }
+    .service-image-wrap {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16 / 9;
+    }
+    .service-row.service-open .service-list {
+        max-height: 300px;
+        padding-top: 1.5rem;
+    }
+    .service-row.service-open .service-image {
+        max-height: 500px;
+        padding-top: 1.5rem;
+    }
+}
+@media (max-width: 768px) {
+    .nav-container {
+        position: relative;
+        flex-wrap: wrap;
+        border-radius: 50px;
+        transition: border-radius 0.35s ease;
+    }
+    .nav-container.menu-open {
+        border-radius: 20px;
+    }
+    .nav-links {
+        display: flex;
+        position: relative;
+        top: auto;
+        left: auto;
+        right: auto;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+        width: 100%;
+        flex-basis: 100%;
+        order: 4;
+        background: none;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        border-left: none;
+        border-right: none;
+        border-bottom: none;
+        border-top: 1px solid transparent;
+        border-radius: 0;
+        padding: 0;
+        box-shadow: none;
+        transform: none;
+        max-height: 0;
+        overflow: hidden;
+        visibility: hidden;
+        transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s ease, visibility 0s 0.4s;
+    }
+    .nav-links.mobile-open {
+        max-height: 300px;
+        padding: 0.25rem 0 0.5rem;
+        border-top-color: rgba(255,255,255,0.1);
+        visibility: visible;
+        transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s ease, visibility 0s 0s;
+    }
+    .nav-links a {
+        padding: 0.75rem 1.5rem;
+        width: 100%;
+        text-align: center;
+        font-size: 1rem;
+        opacity: 0;
+        transform: translateY(-8px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    .nav-links.mobile-open a {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    .nav-links.mobile-open a:nth-child(1) { transition-delay: 0.05s; }
+    .nav-links.mobile-open a:nth-child(2) { transition-delay: 0.1s; }
+    .nav-links.mobile-open a:nth-child(3) { transition-delay: 0.15s; }
+    .nav-links.mobile-open a:nth-child(4) { transition-delay: 0.2s; }
+    .btn-nav-desktop { display: none; }
+    .btn-nav-mobile {
+        display: block;
+        width: auto;
+        margin-top: 0.5rem;
+        background: transparent;
+        color: var(--text-secondary);
+        border: none;
+        font-weight: 400;
+        padding: 0.75rem 1.5rem;
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+    .btn-nav-mobile:hover { background: transparent; color: var(--accent); transform: none; }
+    .nav-links.mobile-open .btn-nav-mobile { opacity: 1; transform: translateY(0); }
+    .mobile-toggle { display: flex; }
+    .navbar { max-width: calc(100% - 40px); }
+    .hero { justify-content: flex-start; padding-top: 18vh !important; }
+    .hero-content { text-align: center; }
+    .hero-title { font-size: clamp(3.15rem, 15.4vw, 7rem); text-align: center; letter-spacing: -2px; }
+    .hero-tagline { font-size: 0.74rem; margin-bottom: 0.5rem; text-align: center; letter-spacing: 1px; max-width: 90vw; white-space: normal; }
+    .mobile-break { display: none; }
+    .hero-location { font-size: 0.9rem; bottom: 30px; }
+    .about-text p { font-size: 0.95rem; }
+    .service-row { grid-template-columns: 1fr; }
+    .work-grid { grid-template-columns: 1fr; }
+    .about-content { grid-template-columns: 1fr; text-align: center; }
+    .about-founder { max-width: 350px; margin: 0 auto; }
+    .about-text { text-align: center; }
+    .founder-info { text-align: center; }
+    .testimonial-card { flex-direction: column; align-items: center; text-align: center; }
+    .testimonial-photo { width: 120px; height: 150px; }
+    .footer-container { flex-direction: column; gap: 1.5rem; text-align: center; }
+    .cta-final { margin: 20px; height: 50vh; }
+    .cta-content { transform: translateY(15%); }
+    .cta-content h2 { font-size: clamp(1.4rem, 5vw, 2rem); white-space: normal; }
+}
+@media (max-width: 1024px) {
+    html { overflow: auto; height: auto; }
+    #smooth-wrapper { position: static; overflow: visible; height: auto; }
+    #smooth-content { will-change: auto; transform: none !important; }
+    body { cursor: auto; }
+    a { cursor: pointer; }
+    button { cursor: pointer; }
+    .cursor-ring, .cursor-dot { display: none !important; }
+}
+@media (max-width: 480px) {
+    .container { padding: 0 20px; }
+    .section-heading-large { font-size: 2.5rem; }
+    .faq-question { font-size: 0.95rem; }
+    .mobile-break { display: inline; }
+}
+
+/* Scroll to Top Button (mobile/tablet only) */
+.scroll-top-btn {
+    display: none;
+    position: fixed;
+    bottom: 30px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+    background: var(--accent);
+    color: var(--black);
+    border: none;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    z-index: 999;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+    cursor: pointer;
+}
+.scroll-top-btn.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+@media (max-width: 1024px) {
+    .scroll-top-btn { display: block; }
+}
+    </style>
+</head>
+<body>
+
+    <!-- Scroll to Top Button (mobile/tablet) -->
+    <button class="scroll-top-btn" id="scrollTopBtn" aria-label="Scroll to top">&uarr;</button>
+
+    <!-- Custom Cursor (outside wrapper so it stays fixed) -->
+    <div class="cursor-ring"></div>
+    <div class="cursor-dot"></div>
+
+    <!-- Navigation (outside smooth scroll so it stays fixed) -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo"><img src="assets/logos/logo-icon.svg" alt="HyperFocus" class="logo-icon"></a>
+            <div class="nav-links">
+                <a href="#work">Work</a>
+                <a href="#services">Services</a>
+                <a href="#about">About</a>
+                <a href="contact.html" class="btn-nav btn-nav-mobile">Start Your Project</a>
+            </div>
+            <a href="contact.html" class="btn-nav btn-nav-desktop">Start Your Project</a>
+            <button class="mobile-toggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <div id="smooth-wrapper">
+    <div id="smooth-content">
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-bg">
+            <img src="assets/images/hero.jpg" alt="HyperFocus Hero" class="hero-img">
+            <div class="hero-overlay"></div>
+            <div class="hero-noise"><canvas id="noiseCanvas"></canvas></div>
+        </div>
+        <div class="hero-content">
+            <p class="hero-tagline">Your on-demand creative team<br class="mobile-break"> for content &amp; branding</p>
+            <h1 class="hero-title"><em class="hero-italic">Hyper</em>Focus</h1>
+        </div>
+        <div class="hero-location">Atlanta, GA</div>
+    </section>
+
+    <!-- Client Logo Ticker -->
+    <section class="logo-ticker">
+        <div class="ticker-track">
+            <div class="ticker-slide">
+                <!-- set 1 -->
+                <div class="ticker-logo"><img src="assets/logos/br.svg" alt="BR"></div>
+                <div class="ticker-logo"><img src="assets/logos/powerade.svg" alt="Powerade"></div>
+                <div class="ticker-logo"><img src="assets/logos/nike.svg" alt="Nike"></div>
+                <div class="ticker-logo"><img src="assets/logos/bodyarmor.svg" alt="BODYARMOR"></div>
+                <div class="ticker-logo"><img src="assets/logos/braves.svg" alt="Braves"></div>
+                <div class="ticker-logo"><img src="assets/logos/wss.svg" alt="World Soccer Shop"></div>
+                <div class="ticker-logo"><img src="assets/logos/flerish.svg" alt="Flerish"></div>
+                <div class="ticker-logo"><img src="assets/logos/40love.svg" alt="40 Love"></div>
+                <div class="ticker-logo"><img src="assets/logos/athletic.svg" alt="The Athletic"></div>
+                <!-- set 2 (duplicate for seamless loop) -->
+                <div class="ticker-logo"><img src="assets/logos/br.svg" alt="BR"></div>
+                <div class="ticker-logo"><img src="assets/logos/powerade.svg" alt="Powerade"></div>
+                <div class="ticker-logo"><img src="assets/logos/nike.svg" alt="Nike"></div>
+                <div class="ticker-logo"><img src="assets/logos/bodyarmor.svg" alt="BODYARMOR"></div>
+                <div class="ticker-logo"><img src="assets/logos/braves.svg" alt="Braves"></div>
+                <div class="ticker-logo"><img src="assets/logos/wss.svg" alt="World Soccer Shop"></div>
+                <div class="ticker-logo"><img src="assets/logos/flerish.svg" alt="Flerish"></div>
+                <div class="ticker-logo"><img src="assets/logos/40love.svg" alt="40 Love"></div>
+                <div class="ticker-logo"><img src="assets/logos/athletic.svg" alt="The Athletic"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Selected Work Section -->
+    <section class="featured-work" id="work">
+        <div class="container">
+            <h2 class="section-heading-large"><em>Featured</em> Work</h2>
+            <p class="section-subheading">We are proud to partner with some of the most visionary brands in the world, from start-ups to global icons.</p>
+            <div class="work-grid">
+                <a href="project-bodyarmor.html" class="project-card">
+                    <div class="project-image"><img src="assets/images/bodyarmor.jpg" alt="BODYARMOR Project"></div>
+                    <h4>Bodyarmor</h4>
+                    <div class="project-tags">
+                        <span>3D Animation</span>
+                        <span>Digital Content</span>
+                    </div>
+                </a>
+                <a href="project-nike.html" class="project-card">
+                    <div class="project-image"><img src="assets/images/nike.jpg" alt="Nike Project"></div>
+                    <h4>Nike</h4>
+                    <div class="project-tags">
+                        <span>Branding</span>
+                        <span>Creative Direction</span>
+                    </div>
+                </a>
+                <a href="project-powerade.html" class="project-card">
+                    <div class="project-image"><img src="assets/images/powerade.jpg" alt="Powerade Project"></div>
+                    <h4>Powerade</h4>
+                    <div class="project-tags">
+                        <span>Advertising</span>
+                        <span>Digital Content</span>
+                    </div>
+                </a>
+                <a href="project-flerish.html" class="project-card">
+                    <div class="project-image"><img src="assets/images/flerish.jpg" alt="Flerish Project"></div>
+                    <h4>Flerish</h4>
+                    <div class="project-tags">
+                        <span>Branding</span>
+                        <span>Advertising</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-heading"><em>What</em> We Do</h2>
+            <p class="section-subheading">Creative services for brands that demand more.</p>
+
+            <div class="service-row">
+                <div class="service-info">
+                    <span class="service-number">[ 01 ]</span>
+                    <div class="service-info-content">
+                        <h3 class="service-title">Digital Content</h3>
+                    </div>
+                    <button class="service-toggle" aria-label="Toggle details">+</button>
+                </div>
+                <div class="service-list">
+                    <ul>
+                        <li>Graphic Design</li>
+                        <li>Video Editing</li>
+                        <li>3D Animation</li>
+                        <li>Content Strategy</li>
+                    </ul>
+                </div>
+                <div class="service-image">
+                    <div class="service-image-wrap">
+                        <img src="assets/images/digital-content.jpg" alt="Digital Content">
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-row">
+                <div class="service-info">
+                    <span class="service-number">[ 02 ]</span>
+                    <div class="service-info-content">
+                        <h3 class="service-title">Branding &amp;<br>Advertising</h3>
+                    </div>
+                    <button class="service-toggle" aria-label="Toggle details">+</button>
+                </div>
+                <div class="service-list">
+                    <ul>
+                        <li>Brand Strategy</li>
+                        <li>Logo Design</li>
+                        <li>Marketing/Advertising Creative</li>
+                        <li>Merchandise Design</li>
+                    </ul>
+                </div>
+                <div class="service-image">
+                    <div class="service-image-wrap">
+                        <img src="assets/images/branding.jpg" alt="Branding & Advertising">
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-row">
+                <div class="service-info">
+                    <span class="service-number">[ 03 ]</span>
+                    <div class="service-info-content">
+                        <h3 class="service-title">Creative<br>Direction</h3>
+                    </div>
+                    <button class="service-toggle" aria-label="Toggle details">+</button>
+                </div>
+                <div class="service-list">
+                    <ul>
+                        <li>Athlete/Talent Branding</li>
+                        <li>Event Branding</li>
+                        <li>Design Systems</li>
+                        <li>Content Strategy</li>
+                    </ul>
+                </div>
+                <div class="service-image">
+                    <div class="service-image-wrap">
+                        <img src="assets/images/creative-direction.jpg" alt="Creative Direction">
+                    </div>
+                </div>
+            </div>
+
+            <div class="services-cta">
+                <a href="contact.html" class="btn-outline">Start Your Project</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-heading"><em>Who</em> We Are</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>HyperFocus isn't just a creative collective. It's a mindset. Built for the ones who see the world differently. The athletes chasing greatness. The artists obsessing over their craft. The brands willing to bet on themselves.</p>
+                    <p>We believe in staying hyperfocused on what matters. The reps nobody sees, the details nobody notices, the late nights, the small adjustments that change everything. We exist to help people chase what's possible and build creative systems that help them win.</p>
+                    <a href="contact.html" class="btn-work-with-us">Work With Us</a>
+                </div>
+                <div class="about-founder">
+                    <div class="about-photo">
+                        <img src="assets/images/ryan.jpg" alt="Ryan Hurst — Founder, HyperFocus" class="founder-img">
+                    </div>
+                    <div class="founder-info">
+                        <h4 class="founder-name">Meet The Founder</h4>
+                        <p class="founder-bio">Ryan Hurst, a multidisciplinary creative director and graphic designer from Atlanta, Georgia, founded the agency in 2025, bringing over a decade of experience in the design and digital media industry.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="reviews">
+        <div class="container">
+            <h2 class="section-heading"><em>Trusted</em> By</h2>
+            <p class="section-subheading">What our partners have to say</p>
+        </div>
+        <div class="testimonial-carousel-wrapper">
+            <button class="carousel-btn prev" id="testPrev" aria-label="Previous">&larr;</button>
+            <div class="testimonial-carousel" id="testimonialCarousel">
+                <div class="testimonial-slide active">
+                    <div class="testimonial-card">
+                        <div class="testimonial-photo"><img src="assets/images/testimonial-1.jpg" alt="Avery Johnson" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;"></div>
+                        <div class="testimonial-content">
+                            <p class="testimonial-quote">"HyperFocus elevated our brand with creative that truly resonated. Their ability to understand our vision and translate it into high-impact content was exceptional."</p>
+                            <div class="testimonial-author">
+                                <h4>Avery Johnson</h4>
+                                <p>Founder, Flerish &amp; 40 Love Scottsdale</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-slide">
+                    <div class="testimonial-card">
+                        <div class="testimonial-photo"><img src="assets/images/testimonial-2.jpg" alt="Dansby Swanson" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;"></div>
+                        <div class="testimonial-content">
+                            <p class="testimonial-quote">"Working with HyperFocus was seamless. They brought a level of creativity and professionalism that made the entire process easy and the results speak for themselves."</p>
+                            <div class="testimonial-author">
+                                <h4>Dansby Swanson</h4>
+                                <p>MLB Player</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-slide">
+                    <div class="testimonial-card">
+                        <div class="testimonial-photo"><img src="assets/images/testimonial-3.jpg" alt="Christian Pierre" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;"></div>
+                        <div class="testimonial-content">
+                            <p class="testimonial-quote">"The team at HyperFocus was instrumental in bringing our creative visions to life. They've been true partners throughout the process. Professional, collaborative, and consistently delivering at a high level. The team moved quickly, elevated the vision, and executed with a level of polish and cultural fluency that made the campaign feel both credible and impactful."</p>
+                            <div class="testimonial-author">
+                                <h4>Christian Pierre</h4>
+                                <p>Social Media Director, BODYARMOR</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-slide">
+                    <div class="testimonial-card">
+                        <div class="testimonial-photo"><img src="assets/images/testimonial-4.jpg" alt="Ishaan Mishra" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;"></div>
+                        <div class="testimonial-content">
+                            <p class="testimonial-quote">"HyperFocus operates at the intersection of culture and craft. They're always on the pulse of what actually matters to audiences, and the digital content they have created is consistently fire. They know how to make brands feel native to the moment and that's something you can't teach."</p>
+                            <div class="testimonial-author">
+                                <h4>Ishaan Mishra</h4>
+                                <p>Creative Director, Bleacher Report</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-btn next" id="testNext" aria-label="Next">&rarr;</button>
+            <div class="carousel-dots" id="testimonialDots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <h2 class="section-heading">Frequently Asked <em>Questions</em></h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>What makes HyperFocus different?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>We operate as an extension of your team. We focus on storytelling, systems, and scalable creative — not just one-off designs.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>How do we get started?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Book a discovery call. We'll learn about your goals, timelines, and creative needs, then recommend a structure that fits.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Do you offer monthly packages?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes. We offer retainer-based creative partnerships as well as project-based engagements.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>How long do projects take?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Timelines vary depending on scope. Most projects begin with strategy, followed by execution phases with clear milestones.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>What does pricing look like?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Pricing is tailored based on scope, complexity, and timeline. After a discovery call, we provide a clear proposal outlining deliverables and investment.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA / Final Section -->
+    <section class="cta-final" id="cta">
+        <div class="cta-bg">
+            <img src="assets/images/cta-bg.jpg" alt="" style="width:100%;height:100%;object-fit:cover;">
+            <div class="cta-overlay"></div>
+        </div>
+        <div class="cta-content">
+            <h2>Let's Build Something Great <em>Together</em></h2>
+            <a href="contact.html" class="btn-accent">Start Your Project</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <img src="assets/logos/footer-logo.svg" alt="HyperFocus" class="footer-logo-img">
+                <span class="footer-location">Atlanta, GA</span>
+            </div>
+            <div class="footer-socials">
+                <a href="https://www.instagram.com/hyperfocus.pro/" target="_blank">Instagram</a>
+                <a href="https://www.tiktok.com/@hyperfocus.pro" target="_blank">TikTok</a>
+                <a href="https://www.linkedin.com/company/hyperfocuspro/" target="_blank">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    </div><!-- /smooth-content -->
+    </div><!-- /smooth-wrapper -->
+
+    <script>
+/* ============================================
+   HYPERFOCUS — All JavaScript
+   ============================================ */
+document.addEventListener('DOMContentLoaded', () => {
+
+    // DISABLE RIGHT-CLICK ON LOGOS
+    document.querySelectorAll('.ticker-logo').forEach(logo => {
+        logo.addEventListener('contextmenu', (e) => e.preventDefault());
+    });
+
+    // CUSTOM CURSOR (desktop only)
+    const isDesktop = window.innerWidth > 1024;
+    const cursorRing = document.querySelector('.cursor-ring');
+    const cursorDot = document.querySelector('.cursor-dot');
+
+    if (isDesktop) {
+        let mouseX = 0, mouseY = 0;
+        let ringX = 0, ringY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            cursorDot.style.left = mouseX + 'px';
+            cursorDot.style.top = mouseY + 'px';
+        });
+
+        function animateRing() {
+            ringX += (mouseX - ringX) * 0.15;
+            ringY += (mouseY - ringY) * 0.15;
+            cursorRing.style.left = ringX + 'px';
+            cursorRing.style.top = ringY + 'px';
+            requestAnimationFrame(animateRing);
+        }
+        animateRing();
+
+        document.querySelectorAll('a, button, .project-card, .faq-question, .meet-card').forEach(el => {
+            el.addEventListener('mouseenter', () => cursorRing.classList.add('hover'));
+            el.addEventListener('mouseleave', () => cursorRing.classList.remove('hover'));
+        });
+
+        document.addEventListener('mouseleave', () => {
+            cursorRing.style.opacity = '0';
+            cursorDot.style.opacity = '0';
+        });
+        document.addEventListener('mouseenter', () => {
+            cursorRing.style.opacity = '1';
+            cursorDot.style.opacity = '1';
+        });
+    }
+
+    // NAVBAR + HERO refs (used in smooth scroll loop)
+    const navbar = document.getElementById('navbar');
+    const heroImg = document.querySelector('.hero-img');
+
+    // MOBILE NAV
+    const mobileToggle = document.querySelector('.mobile-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    const navContainer = document.querySelector('.nav-container');
+    if (mobileToggle) {
+        mobileToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('mobile-open');
+            navContainer.classList.toggle('menu-open');
+        });
+        // Close menu when any nav link is clicked
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('mobile-open');
+                navContainer.classList.remove('menu-open');
+            });
+        });
+    }
+
+    // FADE-IN ON SCROLL
+    const fadeElements = document.querySelectorAll(
+        '.service-row, .about-content, .faq-item, .section-heading, .section-heading-large, .testimonial-carousel-wrapper, .meet-card'
+    );
+    fadeElements.forEach(el => el.classList.add('fade-in'));
+    const observerFade = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) { entry.target.classList.add('visible'); observerFade.unobserve(entry.target); }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    fadeElements.forEach(el => observerFade.observe(el));
+
+    // TESTIMONIALS CAROUSEL
+    const testCarousel = document.getElementById('testimonialCarousel');
+    if (testCarousel) {
+        const testSlides = testCarousel.querySelectorAll('.testimonial-slide');
+        const testDots = document.querySelectorAll('#testimonialDots .dot');
+        const testPrev = document.getElementById('testPrev');
+        const testNext = document.getElementById('testNext');
+        let currentTest = 0;
+        let autoPlayTimer;
+
+        function fadeToSlide(nextIndex) {
+            if (nextIndex === currentTest) return;
+            const current = testSlides[currentTest];
+            const next = testSlides[nextIndex];
+            current.style.transition = 'opacity 0.6s ease';
+            current.style.opacity = '0';
+            setTimeout(() => {
+                current.classList.remove('active');
+                current.style.opacity = '';
+                next.classList.add('active');
+                next.style.opacity = '0';
+                requestAnimationFrame(() => {
+                    next.style.transition = 'opacity 0.6s ease';
+                    requestAnimationFrame(() => { next.style.opacity = '1'; });
+                });
+                currentTest = nextIndex;
+                testDots.forEach((d, i) => { d.classList.remove('active'); if (i === currentTest) d.classList.add('active'); });
+            }, 600);
+        }
+
+        function resetAutoPlay() {
+            clearInterval(autoPlayTimer);
+            autoPlayTimer = setInterval(() => { fadeToSlide((currentTest + 1) % testSlides.length); }, 5000);
+        }
+
+        if (testPrev) testPrev.addEventListener('click', () => { fadeToSlide((currentTest - 1 + testSlides.length) % testSlides.length); resetAutoPlay(); });
+        if (testNext) testNext.addEventListener('click', () => { fadeToSlide((currentTest + 1) % testSlides.length); resetAutoPlay(); });
+        testDots.forEach((dot, i) => { dot.addEventListener('click', () => { fadeToSlide(i); resetAutoPlay(); }); });
+        resetAutoPlay();
+    }
+
+    // SCROLL TO TOP BUTTON (mobile/tablet only)
+    if (!isDesktop) {
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
+        window.addEventListener('scroll', () => {
+            scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
+        });
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
+    // SERVICE ACCORDION (mobile/tablet only)
+    if (!isDesktop) {
+        document.querySelectorAll('.service-row').forEach(row => {
+            row.addEventListener('click', () => {
+                const isOpen = row.classList.contains('service-open');
+                document.querySelectorAll('.service-row').forEach(other => {
+                    if (other !== row) other.classList.remove('service-open');
+                });
+                row.classList.toggle('service-open', !isOpen);
+            });
+        });
+    }
+
+    // FAQ ACCORDION
+    document.querySelectorAll('.faq-item').forEach(item => {
+        item.querySelector('.faq-question').addEventListener('click', () => {
+            const isOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item').forEach(other => { if (other !== item) other.classList.remove('open'); });
+            item.classList.toggle('open', !isOpen);
+        });
+    });
+
+    // SMOOTH LERP SCROLL (desktop only)
+    const smoothWrapper = document.getElementById('smooth-wrapper');
+    const smoothContent = document.getElementById('smooth-content');
+
+    if (isDesktop) {
+        let scrollTarget = 0;
+        let scrollCurrent = 0;
+        const ease = 0.075;
+
+        function getMaxScroll() {
+            return smoothContent.scrollHeight - window.innerHeight;
+        }
+
+        smoothWrapper.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            scrollTarget += e.deltaY;
+            scrollTarget = Math.max(0, Math.min(scrollTarget, getMaxScroll()));
+        }, { passive: false });
+
+        function smoothScrollLoop() {
+            scrollCurrent += (scrollTarget - scrollCurrent) * ease;
+            smoothContent.style.transform = 'translateY(' + (-scrollCurrent) + 'px)';
+
+            navbar.classList.toggle('scrolled', scrollCurrent > 100);
+            if (heroImg) {
+                const scale = 1 + (scrollCurrent * 0.0004);
+                heroImg.style.transform = 'scale(' + Math.min(scale, 1.3) + ')';
+            }
+
+            requestAnimationFrame(smoothScrollLoop);
+        }
+        smoothScrollLoop();
+
+        // On page load, check for hash in URL and scroll to it
+        if (window.location.hash) {
+            const hashTarget = document.querySelector(window.location.hash);
+            if (hashTarget) {
+                const pos = Math.max(0, Math.min(hashTarget.offsetTop, getMaxScroll()));
+                scrollTarget = pos;
+                scrollCurrent = pos;
+            }
+        }
+
+        // Anchor link smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', (e) => {
+                const target = document.querySelector(anchor.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    scrollTarget = target.offsetTop;
+                    scrollTarget = Math.max(0, Math.min(scrollTarget, getMaxScroll()));
+                }
+            });
+        });
+    } else {
+        // Mobile/tablet: native scroll with navbar toggle + parallax
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 100);
+            if (heroImg) {
+                const scale = 1 + (window.scrollY * 0.0004);
+                heroImg.style.transform = 'scale(' + Math.min(scale, 1.3) + ')';
+            }
+        });
+    }
+
+    // ANIMATED FILM GRAIN
+    const noiseCanvas = document.getElementById('noiseCanvas');
+    if (noiseCanvas) {
+        const ctx = noiseCanvas.getContext('2d');
+        const heroEl = noiseCanvas.closest('.hero-noise');
+        let grainW = heroEl ? heroEl.offsetWidth : 1920;
+        let grainH = heroEl ? heroEl.offsetHeight : 1080;
+        noiseCanvas.width = grainW;
+        noiseCanvas.height = grainH;
+
+        function renderGrain() {
+            const imageData = ctx.createImageData(grainW, grainH);
+            const data = imageData.data;
+            for (let i = 0; i < data.length; i += 4) {
+                const v = Math.random() * 255;
+                data[i] = v;
+                data[i + 1] = v;
+                data[i + 2] = v;
+                data[i + 3] = 255;
+            }
+            ctx.putImageData(imageData, 0, 0);
+        }
+
+        let lastFrame = 0;
+        const fps = 12;
+        const interval = 1000 / fps;
+
+        function animateGrain(timestamp) {
+            if (timestamp - lastFrame >= interval) {
+                renderGrain();
+                lastFrame = timestamp;
+            }
+            requestAnimationFrame(animateGrain);
+        }
+        requestAnimationFrame(animateGrain);
+    }
+
+});
+    </script>
+</body>
+</html>
