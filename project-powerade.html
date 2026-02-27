@@ -123,7 +123,7 @@ button { cursor: none; }
 }
 .logo { display: flex; align-items: center; }
 .logo-icon { height: 28px; width: auto; }
-.nav-links { display: flex; gap: 2rem; position: absolute; left: 50%; transform: translateX(-50%); }
+.nav-links { display: none; gap: 2rem; }
 .nav-links a { font-size: 0.85rem; font-weight: 400; color: var(--text-secondary); transition: color 0.3s; white-space: nowrap; }
 .nav-links a:hover { color: var(--accent); }
 .btn-nav {
@@ -140,20 +140,16 @@ button { cursor: none; }
 .btn-nav:hover { background: var(--accent-light); transform: translateY(-1px); }
 
 /* Mobile Toggle */
+.btn-nav-mobile { display: none; }
 .mobile-toggle {
     display: none;
     flex-direction: column;
     gap: 4px;
     background: none;
     border: none;
-    padding: 5px;
+    cursor: pointer;
 }
-.mobile-toggle span {
-    width: 20px;
-    height: 1.5px;
-    background: var(--white);
-    transition: all 0.3s;
-}
+.mobile-toggle span { display: block; width: 20px; height: 2px; background: var(--text-primary); transition: 0.3s; }
 
 /* ============================================
    PROJECT PAGE
@@ -262,6 +258,11 @@ button { cursor: none; }
 .content-item.item-video { aspect-ratio: 9 / 16; }
 .content-item.item-landscape { aspect-ratio: 16 / 9; }
 
+@media (min-width: 769px) {
+    .nav-links { display: flex; position: absolute; left: 50%; transform: translateX(-50%); }
+    .btn-nav-mobile { display: none !important; }
+    .mobile-toggle { display: none !important; }
+}
 @media (max-width: 1024px) {
     .content-item video { cursor: auto; }
 }
@@ -359,8 +360,78 @@ button { cursor: none; }
     .cursor-ring, .cursor-dot { display: none !important; }
 }
 @media (max-width: 768px) {
-    .nav-links { display: none; }
-    .btn-nav { display: none; }
+    .nav-container {
+        position: relative;
+        flex-wrap: wrap;
+        border-radius: 50px;
+        transition: border-radius 0.35s ease;
+    }
+    .nav-container.menu-open {
+        border-radius: 20px;
+    }
+    .nav-links {
+        display: flex !important;
+        position: relative !important;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+        width: 100%;
+        flex-basis: 100%;
+        order: 4;
+        background: none;
+        border: none;
+        border-top: 1px solid transparent;
+        border-radius: 0;
+        padding: 0;
+        box-shadow: none;
+        transform: none !important;
+        left: auto !important;
+        right: auto !important;
+        top: auto !important;
+        max-height: 0;
+        overflow: hidden;
+        visibility: hidden;
+        transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s ease, visibility 0s 0.4s;
+    }
+    .nav-links.mobile-open {
+        max-height: 300px;
+        padding: 0.25rem 0 0.5rem;
+        border-top-color: rgba(255,255,255,0.1);
+        visibility: visible;
+        transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s ease, visibility 0s 0s;
+    }
+    .nav-links a {
+        padding: 0.75rem 1.5rem;
+        width: 100%;
+        text-align: center;
+        font-size: 1rem;
+        opacity: 0;
+        transform: translateY(-8px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    .nav-links.mobile-open a {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    .nav-links.mobile-open a:nth-child(1) { transition-delay: 0.05s; }
+    .nav-links.mobile-open a:nth-child(2) { transition-delay: 0.1s; }
+    .nav-links.mobile-open a:nth-child(3) { transition-delay: 0.15s; }
+    .nav-links.mobile-open a:nth-child(4) { transition-delay: 0.2s; }
+    .btn-nav-desktop { display: none !important; }
+    .btn-nav-mobile {
+        display: block;
+        width: auto;
+        margin-top: 0.5rem;
+        background: transparent;
+        color: var(--text-secondary);
+        border: none;
+        font-weight: 400;
+        padding: 0.75rem 1.5rem;
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+    .btn-nav-mobile:hover { background: transparent; color: var(--accent); transform: none; }
+    .nav-links.mobile-open .btn-nav-mobile { opacity: 1; transform: translateY(0); }
     .mobile-toggle { display: flex; }
     .navbar { max-width: calc(100% - 40px); }
     .project-page { padding: 120px 20px 60px; }
@@ -389,8 +460,9 @@ button { cursor: none; }
                 <a href="index.html#work">Work</a>
                 <a href="index.html#services">Services</a>
                 <a href="index.html#about">About</a>
+                <a href="contact.html" class="btn-nav btn-nav-mobile">Start Your Project</a>
             </div>
-            <a href="contact.html" class="btn-nav">Start Your Project</a>
+            <a href="contact.html" class="btn-nav btn-nav-desktop">Start Your Project</a>
             <button class="mobile-toggle" aria-label="Toggle menu">
                 <span></span><span></span><span></span>
             </button>
@@ -532,11 +604,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const mobileToggle = document.querySelector('.mobile-toggle');
     const navLinks = document.querySelector('.nav-links');
-    const btnNav = document.querySelector('.btn-nav');
+    const navContainer = document.querySelector('.nav-container');
     if (mobileToggle) {
         mobileToggle.addEventListener('click', () => {
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-            if (btnNav) btnNav.style.display = btnNav.style.display === 'inline-block' ? 'none' : 'inline-block';
+            navLinks.classList.toggle('mobile-open');
+            navContainer.classList.toggle('menu-open');
+        });
+        // Close menu when any nav link is clicked
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('mobile-open');
+                navContainer.classList.remove('menu-open');
+            });
         });
     }
 
