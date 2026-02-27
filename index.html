@@ -264,7 +264,7 @@ em { font-family: var(--font-hero); font-style: italic; font-weight: 300; }
 }
 .hero-tagline {
     font-family: var(--font-sans);
-    font-size: 2rem;
+    font-size: 1.4rem;
     font-weight: 300;
     color: var(--white);
     margin-bottom: 1rem;
@@ -280,11 +280,11 @@ em { font-family: var(--font-hero); font-style: italic; font-weight: 300; }
 .mobile-break { display: none; }
 .hero-title {
     font-family: var(--font-hero);
-    font-size: clamp(4rem, 16vw, 15rem);
+    font-size: clamp(2.8rem, 11.2vw, 10.5rem);
     font-weight: 400;
     color: var(--white);
     line-height: 1;
-    letter-spacing: -3px;
+    letter-spacing: -2px;
     text-shadow:
         0 0 2px rgba(255, 255, 255, 0.9),
         0 0 5px rgba(255, 255, 255, 0.5),
@@ -304,8 +304,14 @@ em { font-family: var(--font-hero); font-style: italic; font-weight: 300; }
     font-family: var(--font-hero);
     font-size: 1.9rem;
     font-weight: 500;
-    color: var(--accent);
+    color: var(--white);
     letter-spacing: 1px;
+    text-shadow:
+        0 0 2px rgba(255, 255, 255, 0.9),
+        0 0 5px rgba(255, 255, 255, 0.5),
+        0 0 10px rgba(255, 255, 255, 0.3),
+        0 0 18px rgba(255, 255, 255, 0.15),
+        0 0 30px rgba(255, 255, 255, 0.06);
 }
 
 /* ============================================
@@ -839,8 +845,8 @@ em { font-family: var(--font-hero); font-style: italic; font-weight: 300; }
     .navbar { max-width: calc(100% - 40px); }
     .hero { justify-content: flex-start; padding-top: 25vh !important; }
     .hero-content { text-align: center; }
-    .hero-title { font-size: clamp(4.5rem, 22vw, 10rem); text-align: center; letter-spacing: -3px; }
-    .hero-tagline { font-size: 1.05rem; margin-bottom: 0.5rem; text-align: center; letter-spacing: 1px; max-width: 90vw; white-space: normal; }
+    .hero-title { font-size: clamp(3.15rem, 15.4vw, 7rem); text-align: center; letter-spacing: -2px; }
+    .hero-tagline { font-size: 0.74rem; margin-bottom: 0.5rem; text-align: center; letter-spacing: 1px; max-width: 90vw; white-space: normal; }
     .mobile-break { display: none; }
     .hero-location { font-size: 0.9rem; bottom: 30px; }
     .about-text p { font-size: 0.95rem; }
