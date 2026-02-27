@@ -201,14 +201,14 @@ em { font-family: var(--font-hero); font-style: italic; font-weight: 300; }
     font-size: 0.8rem;
     font-weight: 500;
     color: var(--black);
-    background: var(--accent);
+    background: var(--white);
     border: none;
     border-radius: 50px;
     padding: 8px 20px;
     transition: all 0.3s;
     white-space: nowrap;
 }
-.btn-nav:hover { background: var(--accent-light); transform: translateY(-1px); }
+.btn-nav:hover { background: rgba(255, 255, 255, 0.85); transform: translateY(-1px); }
 .btn-nav-mobile { display: none; }
 .mobile-toggle {
     display: none;
@@ -843,7 +843,7 @@ em { font-family: var(--font-hero); font-style: italic; font-weight: 300; }
     .nav-links.mobile-open .btn-nav-mobile { opacity: 1; transform: translateY(0); }
     .mobile-toggle { display: flex; }
     .navbar { max-width: calc(100% - 40px); }
-    .hero { justify-content: flex-start; padding-top: 25vh !important; }
+    .hero { justify-content: flex-start; padding-top: 8vh !important; }
     .hero-content { text-align: center; }
     .hero-title { font-size: clamp(3.15rem, 15.4vw, 7rem); text-align: center; letter-spacing: -2px; }
     .hero-tagline { font-size: 0.74rem; margin-bottom: 0.5rem; text-align: center; letter-spacing: 1px; max-width: 90vw; white-space: normal; }
