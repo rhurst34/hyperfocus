@@ -378,11 +378,18 @@ input, select, textarea { cursor: none; }
     .btn-nav-mobile { display: none !important; }
     .mobile-toggle { display: none !important; }
 }
-@media (max-width: 1024px) {
+@media (max-width: 1366px) {
     body { cursor: auto; }
     a { cursor: pointer; }
     button { cursor: pointer; }
     input, select, textarea { cursor: auto; }
+    .cursor-ring, .cursor-dot { display: none !important; }
+}
+@media (pointer: coarse) {
+    body { cursor: auto !important; }
+    a { cursor: pointer !important; }
+    button { cursor: pointer !important; }
+    input, select, textarea { cursor: auto !important; }
     .cursor-ring, .cursor-dot { display: none !important; }
 }
 @media (max-width: 768px) {
@@ -563,7 +570,8 @@ input, select, textarea { cursor: none; }
 document.addEventListener('DOMContentLoaded', () => {
 
     // CUSTOM CURSOR (desktop only)
-    const isDesktop = window.innerWidth > 1024;
+    const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+    const isDesktop = window.innerWidth > 1366 && !isTouchDevice;
     const cursorRing = document.querySelector('.cursor-ring');
     const cursorDot = document.querySelector('.cursor-dot');
 

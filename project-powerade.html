@@ -350,13 +350,22 @@ button { cursor: none; }
 /* ============================================
    RESPONSIVE
    ============================================ */
-@media (max-width: 1024px) {
+@media (max-width: 1366px) {
     html { overflow: auto; height: auto; }
     #smooth-wrapper { position: static; overflow: visible; height: auto; }
     #smooth-content { will-change: auto; transform: none !important; }
     body { cursor: auto; }
     a { cursor: pointer; }
     button { cursor: pointer; }
+    .cursor-ring, .cursor-dot { display: none !important; }
+}
+@media (pointer: coarse) {
+    html { overflow: auto !important; height: auto !important; }
+    #smooth-wrapper { position: static !important; overflow: visible !important; height: auto !important; }
+    #smooth-content { will-change: auto !important; transform: none !important; }
+    body { cursor: auto !important; }
+    a { cursor: pointer !important; }
+    button { cursor: pointer !important; }
     .cursor-ring, .cursor-dot { display: none !important; }
 }
 @media (max-width: 768px) {
@@ -573,7 +582,8 @@ button { cursor: none; }
 
     <script>
 document.addEventListener('DOMContentLoaded', () => {
-    const isDesktop = window.innerWidth > 1024;
+    const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+    const isDesktop = window.innerWidth > 1366 && !isTouchDevice;
     const cursorRing = document.querySelector('.cursor-ring');
     const cursorDot = document.querySelector('.cursor-dot');
 
