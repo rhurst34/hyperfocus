@@ -104,7 +104,7 @@ button { cursor: none; }
     top: 35px;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 1000;
+    z-index: 10001;
     width: 90%;
     max-width: 1050px;
     transition: all 0.3s ease;
@@ -736,6 +736,14 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     } else {
+        // Force tablet/mobile styles via JS as fallback
+        document.documentElement.style.overflow = 'auto';
+        document.documentElement.style.height = 'auto';
+        smoothWrapper.style.position = 'static';
+        smoothWrapper.style.overflow = 'visible';
+        smoothWrapper.style.height = 'auto';
+        smoothContent.style.willChange = 'auto';
+        smoothContent.style.transform = 'none';
         window.addEventListener('scroll', () => {
             navbar.classList.toggle('scrolled', window.scrollY > 100);
         });
