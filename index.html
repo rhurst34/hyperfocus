@@ -251,6 +251,7 @@ em { font-family: var(--font-hero); font-style: italic; font-weight: 300; }
     transition: transform 0.1s linear;
     will-change: transform;
 }
+.hero-img-mobile { display: none; }
 .hero-overlay { position: absolute; inset: 0; }
 .hero-noise {
     display: none;
@@ -876,6 +877,8 @@ em { font-family: var(--font-hero); font-style: italic; font-weight: 300; }
     .testimonials { padding: 50px 0; }
     .faq { padding: 50px 0; }
     .section-subheading { margin-bottom: 1.5rem; }
+    .hero-img-desktop { display: none; }
+    .hero-img-mobile { display: block; }
 }
 @media (max-width: 1366px) {
     html { overflow: auto; height: auto; }
@@ -966,7 +969,8 @@ em { font-family: var(--font-hero); font-style: italic; font-weight: 300; }
     <!-- Hero Section -->
     <section class="hero" id="hero">
         <div class="hero-bg">
-            <img src="assets/images/hero.jpg" alt="HyperFocus Hero" class="hero-img">
+            <img src="assets/images/hero.jpg" alt="HyperFocus Hero" class="hero-img hero-img-desktop">
+            <img src="assets/images/hero-mobile.jpg" alt="HyperFocus Hero" class="hero-img hero-img-mobile">
             <div class="hero-overlay"></div>
             <div class="hero-noise"><canvas id="noiseCanvas"></canvas></div>
         </div>
@@ -1086,9 +1090,9 @@ em { font-family: var(--font-hero); font-style: italic; font-weight: 300; }
                 </div>
                 <div class="service-list">
                     <ul>
-                        <li>Logo Design</li>
-                        <li>Website Design &amp; Development</li>
                         <li>Brand Strategy</li>
+                        <li>Logo Design</li>
+                        <li>Marketing/Advertising Creative</li>
                         <li>Merchandise Design</li>
                     </ul>
                 </div>
