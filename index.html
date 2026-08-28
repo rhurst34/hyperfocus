@@ -685,6 +685,7 @@ em { font-family: var(--font-hero); font-style: italic; font-weight: 300; }
     overflow: hidden;
 }
 .cta-bg { position: absolute; inset: 0; }
+.cta-img-mobile { display: none; }
 .cta-overlay { position: absolute; inset: 0; background: none; }
 .cta-content { position: relative; z-index: 2; text-align: center; }
 .cta-content h2 {
@@ -707,8 +708,8 @@ em { font-family: var(--font-hero); font-style: italic; font-weight: 300; }
     display: inline-block;
     font-size: 0.9rem;
     font-weight: 600;
-    color: var(--white);
-    background: var(--black);
+    color: var(--black);
+    background: var(--accent);
     border-radius: 50px;
     padding: 14px 32px;
     transition: all 0.3s;
@@ -881,6 +882,8 @@ em { font-family: var(--font-hero); font-style: italic; font-weight: 300; }
     .section-subheading { margin-bottom: 1.5rem; }
     .hero-img-desktop { display: none; }
     .hero-img-mobile { display: block; }
+    .cta-img-desktop { display: none; }
+    .cta-img-mobile { display: block; }
 }
 @media (max-width: 1366px) {
     html { overflow: auto; height: auto; }
@@ -1284,7 +1287,8 @@ em { font-family: var(--font-hero); font-style: italic; font-weight: 300; }
     <!-- CTA / Final Section -->
     <section class="cta-final" id="cta">
         <div class="cta-bg">
-            <img src="assets/images/cta-bg.jpg" alt="" style="width:100%;height:100%;object-fit:cover;">
+            <img src="assets/images/cta-bg.jpg" alt="" class="cta-img cta-img-desktop" style="width:100%;height:100%;object-fit:cover;">
+            <img src="assets/images/cta-bg-mobile.jpg" alt="" class="cta-img cta-img-mobile" style="width:100%;height:100%;object-fit:cover;">
             <div class="cta-overlay"></div>
         </div>
         <div class="cta-content">
