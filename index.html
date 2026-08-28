@@ -247,13 +247,13 @@ em { font-family: var(--font-hero); font-style: italic; font-weight: 300; }
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 35%;
+    object-position: center center;
     transform: scale(1);
     transition: transform 0.1s linear;
     will-change: transform;
 }
 .hero-img-mobile { display: none; }
-.hero-overlay { position: absolute; inset: 0; }
+.hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 30%, transparent 50%); z-index: 1; }
 .hero-noise {
     display: none;
 }
@@ -884,9 +884,6 @@ em { font-family: var(--font-hero); font-style: italic; font-weight: 300; }
     .hero-img-mobile { display: block; }
     .cta-img-desktop { display: none; }
     .cta-img-mobile { display: block; }
-}
-@media (min-aspect-ratio: 2/1) {
-    .hero-img { object-position: center 25%; }
 }
 @media (max-width: 1366px) {
     html { overflow: auto; height: auto; }
