@@ -514,13 +514,6 @@ button { cursor: none; }
             <p style="font-family: var(--font-sans); font-size: 0.95rem; font-weight: 300; color: var(--text-secondary); line-height: 1.8;">Six weeks. One tournament. Every moment on the world's biggest stage. We partnered with POWERADE throughout the FIFA World Cup 2026™, creating hero graphics, prediction content, and round-by-round timelines highlighting Team USA's run while celebrating the tournament's defining moments, including World Cup Champion Lamine Yamal.</p>
         </div>
 
-        <!-- Image – World Cup Group Stage (wide landscape) -->
-        <div class="content-single" style="margin-bottom: 1.5rem;">
-            <div class="content-item item-landscape" style="aspect-ratio: 21 / 9;">
-                <img src="assets/images/project/powerade/powerade-wc-3.jpg" alt="Powerade World Cup Group Stage">
-            </div>
-        </div>
-
         <!-- Video – 16:9 landscape, autoplay -->
         <div class="content-single" style="margin-bottom: 1.5rem;">
             <div class="content-item item-landscape" style="aspect-ratio: 16 / 9;">
@@ -528,10 +521,20 @@ button { cursor: none; }
             </div>
         </div>
 
-        <!-- Video – Portrait 1080x1350, autoplay -->
+        <!-- Image – World Cup Group Stage (wide landscape) -->
         <div class="content-single" style="margin-bottom: 1.5rem;">
-            <div class="content-item item-portrait" style="aspect-ratio: 4 / 5; max-width: 500px; margin: 0 auto;">
-                <video src="assets/images/project/powerade/powerade-wc-1.mp4" autoplay muted loop playsinline></video>
+            <div class="content-item item-landscape" style="aspect-ratio: 21 / 9;">
+                <img src="assets/images/project/powerade/powerade-wc-3.jpg" alt="Powerade World Cup Group Stage">
+            </div>
+        </div>
+
+        <!-- Side by side: Image (left) + Video (right), both 1080x1350 portrait -->
+        <div style="display: flex; gap: 1.5rem; margin-bottom: 1.5rem;">
+            <div class="content-item item-portrait" style="flex: 1; aspect-ratio: 4 / 5; border-radius: 12px; overflow: hidden;">
+                <img src="assets/images/project/powerade/powerade-wc-4.jpg" alt="Powerade World Cup" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="content-item item-portrait" style="flex: 1; aspect-ratio: 4 / 5; border-radius: 12px; overflow: hidden;">
+                <video src="assets/images/project/powerade/powerade-wc-1.mp4" autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover;"></video>
             </div>
         </div>
 
